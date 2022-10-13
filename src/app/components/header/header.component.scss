@@ -1,3 +1,5 @@
+@import './../../../styles.scss';
+
 :host {
     display: flex;
     justify-content: center;
@@ -17,10 +19,11 @@ h1 {
     margin-top: 32px;
     display: flex;
     gap: 8px;
-
+    
     button {
+        color: #{$color-light + 'aa'};
         font-size: large;
-        border: 1px solid #0002;
+        border: 1px solid #{$color-light + '11'};
         padding: 4px 8px;
         border-radius: 4px;
     }
