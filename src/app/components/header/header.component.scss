@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 0;
+}
+
+.attributes-wrapper span {
+    font-size: larger;
+}
+
+.button-wrapper {
+    margin-top: 32px;
+    display: flex;
+    gap: 8px;
+
+    button {
+        font-size: large;
+        border: 1px solid #0002;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+}

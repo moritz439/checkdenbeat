@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
@@ -20,5 +20,4 @@ export class HeaderComponent  {
   share() {
     alert(2)
   }
-
 }

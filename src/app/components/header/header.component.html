@@ -4,6 +4,8 @@
         <span *ngFor="let attr of beat.attributes"> {{attr}}</span>
     </div>
 
-    <button (click)="share()"> share </button>
-    <button> play </button>
+    <div class="button-wrapper">
+        <button (click)="share()"> share </button>
+        <button> play </button>
+    </div>
 </ng-container>
