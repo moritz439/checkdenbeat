@@ -1,0 +1,19 @@
+@import '../../../styles.scss';
+
+:host {
+    padding: 16px 8px;
+    box-sizing: border-box;
+    background-color: $color-semi-light;
+    border-radius: 2px;
+
+    background: linear-gradient(175deg, $color-light 0%, $color-light 45%, $color-semi-light 100%);
+}
+
+.description-wrapper {
+    color: $color-dark;
+    .name {
+        font-family: 'SourceCode SemiBold';
+        font-size: larger;
+        margin-bottom: 4px;
+    }
+}

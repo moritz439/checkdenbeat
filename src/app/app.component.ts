@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { __param } from 'tslib';
 import { BeatCoreService } from './services/beat-core.service';
 
 @Component({
@@ -6,11 +7,10 @@ import { BeatCoreService } from './services/beat-core.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-  constructor(private beatCore: BeatCoreService) { }
+  constructor() { }
 
-  ngAfterViewInit(): void {
-    this.beatCore.selectBeat();    
-  }
+
+
 }

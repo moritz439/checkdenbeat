@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { BeatListitemComponent } from './components/beat-listitem/beat-listitem.component';
 import { SharePageComponent } from './components/share-page/share-page.component';
+import { ListPipe } from './pipes/list.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SharePageComponent } from './components/share-page/share-page.component
     HeaderComponent,
     BodyComponent,
     BeatListitemComponent,
-    SharePageComponent
+    SharePageComponent,
+    ListPipe
   ],
   imports: [
     BrowserModule,

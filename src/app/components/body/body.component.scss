@@ -1,14 +1,11 @@
 :host {
     display: flex;
-    gap: 32px;
+    gap: 16px;
     box-sizing: border-box;
     flex-direction: column;
-    padding: 16px;
 }
 
 app-beat-listitem {
     display: block;
-    height: 80px;
-    background-color: lightcoral;
     width: 100%;
 }

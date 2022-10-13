@@ -18,4 +18,8 @@ export class BodyComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  select(name: string) {
+    this.beatCore.selectBeat(name);
+  }
+
 }
