@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
@@ -8,15 +8,13 @@ import { Beat } from 'src/models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent  {
 
   selectedBeat$: Observable<Beat>;
 
   constructor(private beatCore: BeatCoreService) {
-    this.selectedBeat$ = this.beatCore.selectedBeat$;
-  }
-
-  ngOnInit(): void {
+    this.selectedBeat$ = this.beatCore.getSelectedBeat();
+    this.selectedBeat$.subscribe(console.log)
   }
 
   share() {

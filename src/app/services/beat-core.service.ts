@@ -11,13 +11,17 @@ export class BeatCoreService {
   beatList: Beat[] = [...beats];
 
   private selectedBeatSubject: Subject<Beat> = new Subject();
-  selectedBeat$: Observable<Beat>;
+  private selectedBeat$: Observable<Beat>;
 
   constructor() {
-    this.selectedBeat$ = this.selectedBeatSubject.asObservable().pipe(shareReplay(1));
+    this.selectedBeat$ = this.selectedBeatSubject.asObservable();
   }
 
   selectBeat() {
     this.selectedBeatSubject.next(this.beatList[1]);
+  } 
+
+  getSelectedBeat(): Observable<Beat> {
+    return this.selectedBeat$;
   }
 }
