@@ -1,0 +1,9 @@
+<ng-container *ngIf="selectedBeat$ | async as beat">
+    <h1> {{beat.name}} </h1>
+    <div class="attributes-wrapper">
+        <span *ngFor="let attr of beat.attributes"> {{attr}}</span>
+    </div>
+
+    <button (click)="share()"> share </button>
+    <button> play </button>
+</ng-container>
