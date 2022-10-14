@@ -4,9 +4,20 @@
         <span *ngFor="let attr of beat.attributes"> {{attr}}</span>
     </div>
 
-    <div class="button-wrapper">
-        <button (click)="play()" class="play-button"> play </button>
-        <button (click)="share()"> share </button>
-        <button (click)="download()"> download </button>
+        <qr-code @fade *ngIf="shareOpen" [value]="beat.name" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
+            [size]="150">
+        </qr-code>
+    <div class="interaction-wrapper">
+
+        <div class="button-wrapper">
+            <button (click)="play()" class="play-button"> play </button>
+            <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
+            <button (click)="download()"> download </button>
+            <button *ngIf="shareOpen" @fade class="link-button">copy link</button>
+        </div>
+
+        <div class="share-wrapper">
+
+        </div>
     </div>
 </ng-container>

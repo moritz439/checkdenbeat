@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { BeatListitemComponent } from './components/beat-listitem/beat-listitem.component';
-import { SharePageComponent } from './components/share-page/share-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListPipe } from './pipes/list.pipe';
+import { QrCodeModule } from 'ng-qrcode';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,13 @@ import { ListPipe } from './pipes/list.pipe';
     HeaderComponent,
     BodyComponent,
     BeatListitemComponent,
-    SharePageComponent,
     ListPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    QrCodeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

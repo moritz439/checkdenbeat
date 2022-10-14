@@ -16,5 +16,9 @@ export const beats: Beat[] = [
     {
         name: 'winter day',
         attributes: ['happy', 'techno']
+    },
+    {
+        name: 'noch ein beat',
+        attributes: ['happy', 'techno']
     }
 ];

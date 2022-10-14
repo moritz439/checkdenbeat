@@ -28,7 +28,8 @@ button {
     padding: 0;
     font-size: medium;
     font-family: 'SourceCode Regular';
-    color: $color-light;
+    color: #{$color-light + 'aa'};
+
 }
 
 h1 {

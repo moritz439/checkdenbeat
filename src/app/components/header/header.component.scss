@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -12,36 +14,82 @@ h1 {
     text-align: center;
 }
 
-.attributes-wrapper span {
-    font-size: larger;
+.interaction-wrapper {
+    position: relative;
+    width: 250px;
+}
+
+.attributes-wrapper {
+    margin-bottom: 32px;
+
+    span {
+        font-size: larger;
+    }
+}
+
+qr-code {
+    overflow: hidden;
+    padding-bottom: 32px;
 }
 
 .button-wrapper {
-    margin-top: 32px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1.4fr 1fr;
     gap: 8px;
     grid-template-areas:
-        "play-button play-button";
+        "play-button play-button"
+        "download-button share-button"
+        "link-button link-button";
+
+    .play-button {
+        grid-area: play-button;
+    }
+
+    .download-button {
+        grid-area: download-button;
+    }
+
+    .share-button {
+        grid-area: share-button;
+    }
+
+    .link-button {
+        grid-area: link-button;
+    }
+
+    overflow: hidden;
+}
+
+.share-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+
 
     button {
-        cursor: pointer;
-        color: #{$color-light + 'aa'};
-        font-size: large;
-        border: 1px solid #{$color-light + '11'};
-        border-radius: 4px;
-        padding: 4px 8px;
-        transition: color .2s, background-color .2s, border-color .2s;
+        color: $color-semi-light;
+        width: 150px;
+        width: 100%;
+    }
 
-        &.play-button {
-            grid-area: play-button;        
-        }
+}
 
-        &:hover, &:focus     {
-            background-color: $color-semi-light;
-            border-color: $color-semi-light;
-            color: $color-dark;
-        }
+button {
+    cursor: pointer;
+    font-size: large;
+    border: 1px solid #{$color-light + '11'};
+    border-radius: 4px;
+    padding: 4px 8px;
+    transition: color .2s, background-color .2s, border-color .2s;
+    overflow: hidden;
+
+    &:hover,
+    &.shareOpen {
+        background-color: $color-semi-light;
+        border-color: $color-semi-light;
+        color: $color-dark;
     }
 }
