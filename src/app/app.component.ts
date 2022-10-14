@@ -10,7 +10,4 @@ import { BeatCoreService } from './services/beat-core.service';
 export class AppComponent {
 
   constructor() { }
-
-
-
 }

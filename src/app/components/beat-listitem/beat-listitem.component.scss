@@ -5,6 +5,7 @@
     box-sizing: border-box;
     background-color: $color-semi-light;
     border-radius: 2px;
+    cursor: pointer;
 
     background: linear-gradient(175deg, $color-light 0%, $color-light 45%, $color-semi-light 100%);
 }

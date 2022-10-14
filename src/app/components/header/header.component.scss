@@ -17,14 +17,30 @@ h1 {
 
 .button-wrapper {
     margin-top: 32px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.4fr 1fr;
     gap: 8px;
-    
+    grid-template-areas:
+        "play-button play-button";
+
     button {
+        cursor: pointer;
         color: #{$color-light + 'aa'};
         font-size: large;
         border: 1px solid #{$color-light + '11'};
-        padding: 4px 8px;
         border-radius: 4px;
+        padding: 4px 8px;
+        transition: color .2s, background-color .2s, border-color .2s;
+
+        &.play-button {
+            grid-area: play-button;        
+        }
+
+        &:hover {
+            background-color: $color-semi-light;
+            border-color: $color-semi-light;
+            color: $color-dark;
+        }
     }
 }

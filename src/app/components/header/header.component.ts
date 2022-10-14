@@ -23,4 +23,12 @@ export class HeaderComponent implements AfterContentInit {
   share() {
     alert(2)
   }
+
+  download() {
+
+  }
+
+  play() {
+
+  }
 }

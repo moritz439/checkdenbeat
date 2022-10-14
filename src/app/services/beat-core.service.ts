@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, shareReplay, Subject, take } from 'rxjs';
 import { beats } from 'src/assets/beats';
 import { Beat } from 'src/models';
@@ -14,8 +14,11 @@ export class BeatCoreService {
   private selectedBeatSubject: BehaviorSubject<Beat>;
   private selectedBeat$: Observable<Beat>;
 
-  constructor(private activatedRoute: ActivatedRoute) {
-    let activeBeatName = this.activatedRoute.snapshot.paramMap.get('beat') || this.getRandomBeatName();
+  constructor(private route: ActivatedRoute) {
+    // does not work. need to fix
+    let beatFromRoute = this.route.snapshot.queryParams['beat'];
+    console.log('param Beat is ', beatFromRoute)
+    let activeBeatName =  beatFromRoute || this.getRandomBeatName();
     this.selectedBeatSubject = new BehaviorSubject(this.getBeatByName(activeBeatName))
 
     this.selectedBeat$ = this.selectedBeatSubject.asObservable();
