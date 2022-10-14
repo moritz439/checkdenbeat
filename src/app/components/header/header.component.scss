@@ -39,7 +39,7 @@ qr-code {
     gap: 8px;
     grid-template-areas:
         "play-button play-button"
-        "download-button share-button"
+        "share-button download-button"
         "link-button link-button";
 
     .play-button {

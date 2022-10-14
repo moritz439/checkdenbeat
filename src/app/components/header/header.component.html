@@ -11,8 +11,8 @@
 
         <div class="button-wrapper">
             <button (click)="play()" class="play-button"> play </button>
-            <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
             <button (click)="download()"> download </button>
+            <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
             <button *ngIf="shareOpen" @fade class="link-button">copy link</button>
         </div>
 
