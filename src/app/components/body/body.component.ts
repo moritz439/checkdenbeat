@@ -18,7 +18,7 @@ import { Beat } from 'src/models';
   ]
 
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent {
 
   beatList: Beat[];
   beatListUnwanted: Beat[];
@@ -31,10 +31,7 @@ export class BodyComponent implements OnInit {
     this.selectedTypes = [];
     this.types = [...new Set(this.beatList.flatMap((v) => v.attributes))];
   }
-
-  ngOnInit(): void {
-  }
-
+  
   select(name: string) {
     this.beatCore.selectBeat(name);
   }
@@ -54,11 +51,23 @@ export class BodyComponent implements OnInit {
       this.beatList = this.beatCore.beatList;
       this.beatListUnwanted = [];
     } else {
-      this.beatList = this.beatCore.beatList.filter(beat => beat.attributes.some(attr => this.selectedTypes.includes(attr)))
-      this.beatListUnwanted = this.beatCore.beatList.filter(beat => !beat.attributes.some(attr => this.selectedTypes.includes(attr)))
+      this.beatList = this.beatCore.beatList.filter(beat => this.descriptorsMatchAttributes(beat.attributes))
+      this.beatListUnwanted = this.beatCore.beatList.filter(beat => !this.descriptorsMatchAttributes(beat.attributes))
     }
 
     window.scrollTo({top: 1000, behavior: 'smooth'})
+  }
+
+  descriptorsMatchAttributes(attributes: string[]): boolean {
+    let allTypesMatchSelection = true;
+    
+    this.selectedTypes.forEach((type) => {
+      if (!attributes.includes(type)) {
+        allTypesMatchSelection = false;
+      }
+    })
+
+    return allTypesMatchSelection;
   }
 
 }

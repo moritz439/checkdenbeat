@@ -7,13 +7,34 @@
     flex-direction: column;
 }
 
-app-beat-listitem {
-    display: block;
-    width: 100%;
-    &.unwanted {
-        opacity: .6;
+.beat-list-wrapper {
+    display: flex;
+    gap: 16px;
+    
+    @include devices(tablet) {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        app-beat-listitem {
+            width: 160px;
+            height: 160px;
+        }
+    }
+    
+    @include devices(mobile) {
+        flex-direction: column;
+        app-beat-listitem {
+        }
+    }
+
+    app-beat-listitem {
+        &.unwanted {
+            opacity: .6;
+        }
     }
 }
+
+
 
 .type-selector {
     display: flex;
@@ -35,3 +56,4 @@ app-beat-listitem {
         }
     }
 }
+
