@@ -1,6 +1,7 @@
 import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { __param } from 'tslib';
 import { BeatCoreService } from './services/beat-core.service';
+import { ShareService } from './services/share.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,7 @@ import { BeatCoreService } from './services/beat-core.service';
 })
 export class AppComponent {
 
-  constructor() { }
+  shareIsOpen$ = this.shareService.isOpenSubject$;
+
+  constructor(private shareService: ShareService) { }
 }

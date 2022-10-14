@@ -1,6 +1,7 @@
 import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { filter, Observable } from 'rxjs';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
+import { ShareService } from 'src/app/services/share.service';
 import { Beat } from 'src/models';
 
 @Component({
@@ -12,7 +13,7 @@ export class HeaderComponent implements AfterContentInit {
 
   selectedBeat$: Observable<Beat>;
 
-  constructor(private beatCore: BeatCoreService) {
+  constructor(private beatCore: BeatCoreService, private shareService: ShareService) {
     this.selectedBeat$ = this.beatCore.getSelectedBeat();
   }
 
@@ -21,7 +22,7 @@ export class HeaderComponent implements AfterContentInit {
   }
 
   share() {
-    alert(2)
+    this.shareService.open();
   }
 
   download() {

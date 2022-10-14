@@ -26,6 +26,7 @@ export class BeatCoreService {
 
   selectBeat(name: string) {
     this.selectedBeatSubject.next(this.getBeatByName(name));
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 
   getSelectedBeat(): Observable<Beat> {
