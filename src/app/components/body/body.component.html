@@ -1,3 +1,7 @@
+<div class="type-selector">
+    <button *ngFor="let type of types" [ngClass]="{'selected': isSelected(type)}" (click)="toggleSelection(type)">{{type}}</button>
+</div>
+
 <app-beat-listitem 
 *ngFor="let beat of beatList" 
 [beat]="beat" 

@@ -1,3 +1,5 @@
+@import './../../../styles.scss';
+
 :host {
     display: flex;
     gap: 16px;
@@ -8,4 +10,25 @@
 app-beat-listitem {
     display: block;
     width: 100%;
+}
+
+.type-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    button {
+        border: 1px solid #{$color-light + '11'};
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: color .2s, background-color .2s, border-color .2s;
+
+        &.selected,
+        &:hover {
+            background-color: $color-semi-light;
+            border-color: $color-semi-light;
+            color: $color-dark;
+        }
+    }
 }
