@@ -9,6 +9,7 @@
 
 h1 {
     margin: 0;
+    text-align: center;
 }
 
 .attributes-wrapper span {
@@ -37,7 +38,7 @@ h1 {
             grid-area: play-button;        
         }
 
-        &:hover {
+        &:hover, &:focus     {
             background-color: $color-semi-light;
             border-color: $color-semi-light;
             color: $color-dark;
