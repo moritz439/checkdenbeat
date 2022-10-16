@@ -4,7 +4,7 @@
         {{beat.attributes | list }}s
     </div>
 
-        <qr-code @fade *ngIf="shareOpen" [value]="beat.name" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
+        <qr-code @fade *ngIf="shareOpen" [value]="url" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
             [size]="150">
         </qr-code>
     <div class="interaction-wrapper">

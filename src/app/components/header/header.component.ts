@@ -25,6 +25,7 @@ export class HeaderComponent implements AfterContentInit {
 
   selectedBeat$: Observable<Beat>;
   shareOpen = false;
+  url: string;
 
   constructor(private beatCore: BeatCoreService, private router: Router, private route: ActivatedRoute) {
     const beatParamIsSet = !!this.route.snapshot.paramMap.get('beat');
@@ -45,6 +46,7 @@ export class HeaderComponent implements AfterContentInit {
   }
 
   share() {
+    this.url = window.location.href;
     this.shareOpen = !this.shareOpen;
   }
 
