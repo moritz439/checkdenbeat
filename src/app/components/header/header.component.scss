@@ -58,7 +58,13 @@ qr-code {
     overflow: hidden;
 }
 
-button {
+a {
+    color: #{$color-light + 'aa'};
+    text-decoration: none;
+    text-align: center;
+}
+
+button, a {
     cursor: pointer;
     font-size: large;
     border: 1px solid #{$color-light + '11'};

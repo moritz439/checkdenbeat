@@ -1,5 +1,5 @@
-import { trigger, transition, query, stagger, animate, style } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';

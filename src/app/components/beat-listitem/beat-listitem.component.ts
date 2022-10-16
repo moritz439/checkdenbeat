@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Beat } from 'src/models';
 
 @Component({
@@ -10,8 +10,7 @@ export class BeatListitemComponent implements OnInit {
 
   @Input() beat: Beat;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
 

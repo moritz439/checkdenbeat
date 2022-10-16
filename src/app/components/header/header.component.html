@@ -4,16 +4,16 @@
         {{beat.attributes | list }}s
     </div>
 
-        <qr-code @fade *ngIf="shareOpen" [value]="url" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
-            [size]="150">
-        </qr-code>
+    <qr-code @fade *ngIf="shareOpen" [value]="url" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
+        [size]="150">
+    </qr-code>
     <div class="interaction-wrapper">
 
         <div class="button-wrapper">
-            <button (click)="play()" class="play-button"> play </button>
-            <button (click)="download()"> download </button>
+            <button (click)="play()" class="play-button">play</button>
+            <a [href]="beat.filePath" download>download</a>
             <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
-            <button *ngIf="shareOpen" @fade (click)="copyURL()" class="link-button">copy link</button>
+            <button *ngIf="shareOpen" @fade (click)="copyURL()" class="link-button">{{ copyLinkButtonText }}</button>
         </div>
     </div>
 </ng-container>

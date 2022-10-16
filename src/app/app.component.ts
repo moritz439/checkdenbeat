@@ -1,5 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
-import { __param } from 'tslib';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

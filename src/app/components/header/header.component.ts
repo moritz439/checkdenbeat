@@ -1,7 +1,7 @@
-import { trigger, transition, animate, style } from '@angular/animations';
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { AfterContentInit, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
 
@@ -26,6 +26,7 @@ export class HeaderComponent implements AfterContentInit {
   selectedBeat$: Observable<Beat>;
   shareOpen = false;
   url: string;
+  copyLinkButtonText = 'copy link';
 
   constructor(private beatCore: BeatCoreService, private router: Router, private route: ActivatedRoute) {
     const beatParamIsSet = !!this.route.snapshot.paramMap.get('beat');
@@ -50,15 +51,15 @@ export class HeaderComponent implements AfterContentInit {
     this.shareOpen = !this.shareOpen;
   }
 
-  download() {
-
-  }
-
   play() {
 
   }
 
   copyURL() {
     navigator.clipboard.writeText(window.location.href);
+    this.copyLinkButtonText = 'link copied!';
+    setTimeout(() => {
+      this.copyLinkButtonText = 'copy link';
+    }, 2000)
   }
 }
