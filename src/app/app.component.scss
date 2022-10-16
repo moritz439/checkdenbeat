@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-app-header {
+::ng-deep app-header {
     width: 100%;
     min-height: 66vh;
 }

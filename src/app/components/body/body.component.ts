@@ -1,5 +1,6 @@
 import { trigger, transition, query, stagger, animate, style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
 
@@ -25,7 +26,7 @@ export class BodyComponent {
   types: string[];
   selectedTypes: string[];
 
-  constructor(private beatCore: BeatCoreService) {
+  constructor(private beatCore: BeatCoreService, private router: Router) {
     this.beatList = beatCore.beatList;
     this.beatListUnwanted = [];
     this.selectedTypes = [];
@@ -33,7 +34,8 @@ export class BodyComponent {
   }
 
   select(name: string) {
-    this.beatCore.selectBeat(name);
+    this.router.navigate([name]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   isSelected(type: string): boolean {
