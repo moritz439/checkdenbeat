@@ -5,6 +5,10 @@
     gap: 16px;
     box-sizing: border-box;
     flex-direction: column;
+
+    @include devices(tablet) {
+        align-items: center;
+    }
 }
 
 .beat-list-wrapper {
@@ -14,6 +18,7 @@
     @include devices(tablet) {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
 
         app-beat-listitem {
             width: 160px;
@@ -48,8 +53,7 @@
         cursor: pointer;
         transition: color .2s, background-color .2s, border-color .2s;
 
-        &.selected,
-        &:hover {
+        &.selected {
             background-color: $color-semi-light;
             border-color: $color-semi-light;
             color: $color-dark;

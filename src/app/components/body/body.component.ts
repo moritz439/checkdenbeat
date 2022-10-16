@@ -29,9 +29,9 @@ export class BodyComponent {
     this.beatList = beatCore.beatList;
     this.beatListUnwanted = [];
     this.selectedTypes = [];
-    this.types = [...new Set(this.beatList.flatMap((v) => v.attributes))];
+    this.types = [...new Set(this.beatList.flatMap((v) => v.attributes))].sort();
   }
-  
+
   select(name: string) {
     this.beatCore.selectBeat(name);
   }

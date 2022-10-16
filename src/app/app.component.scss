@@ -2,6 +2,7 @@
     display: flex;
     gap: 16px;
     flex-direction: column;
+    align-items: center;
 }
 
 app-header {
@@ -11,4 +12,5 @@ app-header {
 
 app-body {
     width: 100%;
+    max-width: 800px;
 }
