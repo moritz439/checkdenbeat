@@ -7,11 +7,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latestt
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install dependencies & build
         run: |
-          npx i
-          npx run build:prod          
+          npm i
+          npm run build:prod          
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
