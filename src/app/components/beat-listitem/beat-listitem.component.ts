@@ -6,14 +6,9 @@ import { Beat } from 'src/models';
   templateUrl: './beat-listitem.component.html',
   styleUrls: ['./beat-listitem.component.scss']
 })
-export class BeatListitemComponent implements OnInit {
+export class BeatListitemComponent {
 
   @Input() beat: Beat;
 
   constructor() {}
-
-  ngOnInit(): void {
-
-  }
-
 }
