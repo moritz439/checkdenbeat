@@ -23,7 +23,8 @@ jobs:
 
       - name: Install dependencies & build
         run: |
-          npm run build:prod          
+          npx i
+          npx run build:prod          
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
