@@ -60,16 +60,8 @@ export class BodyComponent {
     window.scrollTo({top: 1000, behavior: 'smooth'})
   }
 
-  descriptorsMatchAttributes(attributes: string[]): boolean {
-    let allTypesMatchSelection = true;
-    
-    this.selectedTypes.forEach((type) => {
-      if (!attributes.includes(type)) {
-        allTypesMatchSelection = false;
-      }
-    })
-
-    return allTypesMatchSelection;
+  descriptorsMatchAttributes(descriptors: string[]): boolean {
+    return this.selectedTypes.every(attribute => descriptors.includes(attribute));
   }
 
 }
