@@ -25,4 +25,4 @@ jobs:
         env: ACCOUNT_EMAIL: ${{ secrets.ACCOUNT_EMAIL }}
         run: |
           npm i
-          ng deploy --base-href=/checkdenbeat/ --repo=https://github.com/moritz439/checkdenbeat.git --name=moritz439 --email=$ACCOUNT_EMAIL --no-silent 
+          ng deploy --base-href=/checkdenbeat/ --repo=https://github.com/moritz439/checkdenbeat.git --name=moritz439 --email= $ACCOUNT_EMAIL --no-silent 
