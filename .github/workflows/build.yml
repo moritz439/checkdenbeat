@@ -24,4 +24,5 @@ jobs:
       - name: Deploy
         run: |
           npm ci
+          npm i -g @angular/cli@latest
           ng deploy --base-href=/checkdenbeat/ --repo=https://github.com/moritz439/checkdenbeat.git --name=moritz439 --email=${{ secrets.ACCOUNT_EMAIL}} --no-silent 
