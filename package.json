@@ -8,7 +8,7 @@
     "build:prod": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/checkdenbeat/"
+    "deploy": "ng deploy --base-href=/checkdenbeat/ --no-silent"
   },
   "private": true,
   "dependencies": {
