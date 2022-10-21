@@ -3,7 +3,10 @@
     <div class="attributes-wrapper">
         {{beat.attributes | list }}s
     </div>
-
+    <div class="description-wrapper" *ngIf="beat.bpm && beat.key" @fade>
+        <span *ngIf="beat.bpm">{{ beat.bpm }} bpm</span>
+        <span *ngIf="beat.key">, {{ beat.key }}</span>
+    </div>
     <qr-code @fade *ngIf="shareOpen" [value]="url" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
         [size]="150">
     </qr-code>

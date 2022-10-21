@@ -5,10 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/checkdenbeat/ --repo=https://github.com/moritz439/checkdenbeat.git --name=moritz439 --email=$ACCOUNT_EMAIL --no-silent"
+    "deploy": "ng deploy --base-href=/checkdenbeat/"
   },
   "private": true,
   "dependencies": {

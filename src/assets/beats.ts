@@ -4,7 +4,9 @@ export const beats: Beat[] = [
     {
         name: 'Flutes',
         attributes: ['happy', 'dark'],
-        filePath: 'assets/beats/xxx.mp3'
+        filePath: 'assets/beats/xxx.mp3',
+        bpm: 120,
+        key: 'F# minor'
     },
     {
         name: 'dark atmos',

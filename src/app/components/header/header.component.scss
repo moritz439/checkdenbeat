@@ -18,18 +18,24 @@ h1 {
     position: relative;
     width: 250px;
 }
+.description-wrapper {
+    padding-top: 18px;
+    font-size: small;
+    color: #{$color-light + 'aa'};
+}
 
 .attributes-wrapper {
-    margin-bottom: 32px;
     font-size: larger;
+
 }
 
 qr-code {
     overflow: hidden;
-    padding-bottom: 32px;
+    padding-top: 32px;
 }
 
 .button-wrapper {
+    padding-top: 32px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1.4fr 1fr;
