@@ -23,4 +23,5 @@ jobs:
 
       - name: Deploy
         run: |
+          npm i
           npm run deploy 
