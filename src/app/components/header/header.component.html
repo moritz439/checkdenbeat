@@ -10,9 +10,8 @@
         [size]="150">
     </qr-code>
     <div class="interaction-wrapper">
-
         <div class="button-wrapper">
-            <button (click)="play()" class="play-button">play</button>
+            <button (click)="play(beat.name)" class="play-button">{{ (audioIsPlaying$ | async) ? 'pause' : 'play' }}</button>
             <a [href]="beat.filePath" download>download</a>
             <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
             <button *ngIf="shareOpen" @fade (click)="copyURL()" class="link-button">{{ copyLinkButtonText }}</button>

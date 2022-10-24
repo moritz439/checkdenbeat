@@ -14,25 +14,25 @@ export class BeatCoreService {
 
   beatList: Beat[];
 
-  private selectedBeatSubject: BehaviorSubject<Beat>;
-  private selectedBeat$: Observable<Beat>;
+  private _selectedBeatSubject: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
+  selectedBeat$: Observable<Beat>;
+  
+  private _audio: HTMLAudioElement;
+  private _audioIsPlayingSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  audioIsPlaying$: Observable<boolean>;
+  private _audioIsPlaying: boolean = false;
 
   constructor() {
     this.beatList = [...beats].sort(this.sortByDate)
-    this.selectedBeatSubject = new BehaviorSubject(undefined);
-    this.selectedBeat$ = this.selectedBeatSubject.asObservable();
+    this.selectedBeat$ = this._selectedBeatSubject.asObservable();
+
+    this._audioIsPlayingSubject$.subscribe(isPlaying => this._audioIsPlaying = isPlaying);
+    this.audioIsPlaying$ = this._audioIsPlayingSubject$.asObservable();
   }
 
   selectBeat(name: string) {
-    this.selectedBeatSubject.next(this.getBeatByName(name));
-  }
-
-  getSelectedBeat(): Observable<Beat> {
-    return this.selectedBeat$;
-  }
-
-  private getBeatByName(name: string): Beat {
-    return this.beatList.find(beat => beat.name === name);
+    this._selectedBeatSubject.next(this.getBeatByName(name));
+    this._audioIsPlayingSubject$.next(false);
   }
 
   getRandomBeatName(): string {
@@ -41,7 +41,25 @@ export class BeatCoreService {
     return this.beatList[randomIndex].name;
   }
 
-  sortByDate(beatA: Beat, beatB: Beat): number {
+  playPause(name: string) {
+    const audioSource = this.getBeatByName(name).filePath;
+    
+    if (this._audioIsPlaying) {
+      // canPlayTHrough implementieren: https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio
+      this._audio.pause();
+    } else {
+      this._audio = new Audio(audioSource);
+      this._audio.play();
+    }
+    
+    this._audioIsPlayingSubject$.next(!this._audioIsPlaying);
+  }
+
+  private getBeatByName(name: string): Beat {
+    return this.beatList.find(beat => beat.name === name);
+  }
+
+  private sortByDate(beatA: Beat, beatB: Beat): number {
     const dateFormat = 'DD.MM.YYYY';
     const dateA = dayjs(beatA.date, dateFormat);
     const dateB = dayjs(beatB.date, dateFormat);
@@ -54,4 +72,8 @@ export class BeatCoreService {
       return 0
     }
   }
+
+
+
+
 }

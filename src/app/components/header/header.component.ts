@@ -21,10 +21,11 @@ import { Beat } from 'src/models';
     ])
   ]
 })
-export class HeaderComponent implements AfterContentInit {
+export class HeaderComponent {
 
   selectedBeat$: Observable<Beat>;
   selectedBeatAdditionalInfos$: Observable<string[]>;
+  audioIsPlaying$: Observable<boolean>;
   shareOpen = false;
   url: string;
   copyLinkButtonText = 'copy link';
@@ -38,7 +39,7 @@ export class HeaderComponent implements AfterContentInit {
     this.route.paramMap.pipe(map(params => params.get('beat')))
       .subscribe(v => this.beatCore.selectBeat(v));
 
-    this.selectedBeat$ = this.beatCore.getSelectedBeat();
+    this.selectedBeat$ = this.beatCore.selectedBeat$;
     this.selectedBeatAdditionalInfos$ = this.selectedBeat$.pipe(map(beat => {
       let additionalInfos = [];
       beat.key && additionalInfos.push(beat.key);
@@ -48,11 +49,9 @@ export class HeaderComponent implements AfterContentInit {
       return additionalInfos
     }));
 
+    this.audioIsPlaying$ = this.beatCore.audioIsPlaying$;
+
     this.selectedBeat$.subscribe(() => this.shareOpen = false)
-  }
-
-  ngAfterContentInit(): void {
-
   }
 
   share() {
@@ -60,8 +59,8 @@ export class HeaderComponent implements AfterContentInit {
     this.shareOpen = !this.shareOpen;
   }
 
-  play() {
-
+  play(name: string) {
+    this.beatCore.playPause(name);
   }
 
   copyURL() {
