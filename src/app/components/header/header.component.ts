@@ -24,6 +24,7 @@ import { Beat } from 'src/models';
 export class HeaderComponent implements AfterContentInit {
 
   selectedBeat$: Observable<Beat>;
+  selectedBeatAdditionalInfos$: Observable<string[]>;
   shareOpen = false;
   url: string;
   copyLinkButtonText = 'copy link';
@@ -38,6 +39,14 @@ export class HeaderComponent implements AfterContentInit {
       .subscribe(v => this.beatCore.selectBeat(v));
 
     this.selectedBeat$ = this.beatCore.getSelectedBeat();
+    this.selectedBeatAdditionalInfos$ = this.selectedBeat$.pipe(map(beat => {
+      let additionalInfos = [];
+      beat.key && additionalInfos.push(beat.key);
+      beat.bpm && additionalInfos.push(`${beat.bpm} bpm`);
+      beat.date && additionalInfos.push(beat.date);
+      
+      return additionalInfos
+    }));
 
     this.selectedBeat$.subscribe(() => this.shareOpen = false)
   }

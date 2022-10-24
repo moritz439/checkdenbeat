@@ -45,7 +45,7 @@ export class BeatCoreService {
     const dateFormat = 'DD.MM.YYYY';
     const dateA = dayjs(beatA.date, dateFormat);
     const dateB = dayjs(beatB.date, dateFormat);
-    console.log(dateA)
+
     if (dateA.isBefore(dateB)) {
       return 1
     } else if (dateA.isAfter(dateB)) {
