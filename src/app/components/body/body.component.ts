@@ -63,5 +63,4 @@ export class BodyComponent {
   descriptorsMatchAttributes(descriptors: string[]): boolean {
     return this.selectedTypes.every(attribute => descriptors.includes(attribute));
   }
-
 }

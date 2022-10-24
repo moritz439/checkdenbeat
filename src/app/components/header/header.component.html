@@ -3,7 +3,7 @@
     <div class="attributes-wrapper">
         {{beat.attributes | list }}s
     </div>
-    <div class="description-wrapper" *ngIf="beat.bpm && beat.key" @fade>
+    <div class="description-wrapper" *ngIf="beat.bpm && beat.key && !shareOpen" @fade>
         <span *ngIf="beat.bpm">{{ beat.bpm }} bpm</span>
         <span *ngIf="beat.key">, {{ beat.key }}</span>
     </div>
