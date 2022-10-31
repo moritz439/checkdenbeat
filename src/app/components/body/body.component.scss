@@ -28,8 +28,6 @@
     
     @include devices(mobile) {
         flex-direction: column;
-        app-beat-listitem {
-        }
     }
 
     app-beat-listitem {
