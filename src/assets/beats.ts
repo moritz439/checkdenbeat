@@ -53,7 +53,7 @@ export const beats: Beat[] = [
     },
     {
         name: 'iyf',
-        attributes: ['hard', 'agressive'],
+        attributes: ['hard', 'aggressive'],
         filePath: 'assets/beats/iyf.mp3',
         date: '12.08.2021'
     },
