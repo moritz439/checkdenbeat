@@ -45,7 +45,7 @@ export class HeaderComponent {
       beat.key && additionalInfos.push(beat.key);
       beat.bpm && additionalInfos.push(`${beat.bpm} bpm`);
       beat.date && additionalInfos.push(beat.date);
-      
+
       return additionalInfos
     }));
 

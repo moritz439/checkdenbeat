@@ -1,5 +1,5 @@
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
@@ -12,7 +12,7 @@ import { Beat } from 'src/models';
     trigger('listAnimation', [
       transition('* <=> *', [
         query(':enter',
-          [style({ opacity: 0 }), stagger('60ms', animate('600ms ease-out', style({ opacity: 1 })))],
+          [style({ opacity: 0, transform: 'scale(.9)' }), stagger('20ms', animate('600ms ease-out', style({ opacity: 1, transform: 'scale(1)' })))],
         )
       ])
     ])
@@ -25,6 +25,8 @@ export class BodyComponent {
   beatListUnwanted: Beat[];
   types: string[];
   selectedTypes: string[];
+
+  @ViewChild("typeSelector") typeSelector: ElementRef<HTMLElement>;
 
   constructor(private beatCore: BeatCoreService, private router: Router) {
     this.beatList = beatCore.beatList;
@@ -48,7 +50,7 @@ export class BodyComponent {
     } else {
       this.selectedTypes = this.selectedTypes.filter(typeEl => type !== typeEl)
     }
-
+    
     if (this.selectedTypes.length === 0) {
       this.beatList = this.beatCore.beatList;
       this.beatListUnwanted = [];
@@ -56,8 +58,10 @@ export class BodyComponent {
       this.beatList = this.beatCore.beatList.filter(beat => this.descriptorsMatchAttributes(beat.attributes))
       this.beatListUnwanted = this.beatCore.beatList.filter(beat => !this.descriptorsMatchAttributes(beat.attributes))
     }
-
-    window.scrollTo({top: 1000, behavior: 'smooth'})
+    
+    
+    const offsetTop = window.pageYOffset + this.typeSelector.nativeElement.getBoundingClientRect().top;
+    window.scrollTo({top: offsetTop, behavior: 'smooth'})
   }
 
   descriptorsMatchAttributes(descriptors: string[]): boolean {
