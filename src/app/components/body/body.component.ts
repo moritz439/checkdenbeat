@@ -59,7 +59,6 @@ export class BodyComponent {
       this.beatListUnwanted = this.beatCore.beatList.filter(beat => !this.descriptorsMatchAttributes(beat.attributes))
     }
     
-    
     const offsetTop = window.pageYOffset + this.typeSelector.nativeElement.getBoundingClientRect().top;
     window.scrollTo({top: offsetTop, behavior: 'smooth'})
   }
