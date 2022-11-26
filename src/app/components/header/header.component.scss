@@ -18,6 +18,7 @@ h1 {
     position: relative;
     width: 250px;
 }
+
 .description-wrapper {
     padding-top: 16px;
     font-size: small;
@@ -70,7 +71,8 @@ a {
     text-align: center;
 }
 
-button, a {
+button,
+a {
     cursor: pointer;
     font-size: large;
     border: 1px solid #{$color-light + '11'};
@@ -89,4 +91,49 @@ button, a {
 
 .placeholder {
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+
+    h2,
+    h3 {
+        margin-top: 0;
+    }
+
+    svg {
+        opacity: 0;
+        animation: wiggle 6s infinite;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        bottom: -32px;
+    }
+}
+
+
+
+@keyframes wiggle {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: .3;
+        transform: translateY(10px);
+
+    }
+
+    60% {
+        transform: translateY(10px);
+
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
 }
