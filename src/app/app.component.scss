@@ -2,7 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+}
+
+main {
+    width: 800px;
 }
 
 ::ng-deep {
@@ -12,6 +15,5 @@
     }
     app-beatselector {
         width: 100%;
-        max-width: 800px;
     }
 }

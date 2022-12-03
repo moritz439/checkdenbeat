@@ -5,6 +5,7 @@
     gap: 16px;
     box-sizing: border-box;
     flex-direction: column;
+    padding: 16px 0;
 
     @include devices(tablet) {
         align-items: center;
@@ -38,7 +39,6 @@
 }
 
 .type-selector {
-    padding-top: 16px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;

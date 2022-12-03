@@ -1,8 +1,8 @@
-<div class="type-selector" #typeSelector @listAnimation>
+<div class="type-selector" #typeSelector>
     <button *ngFor="let type of types" [ngClass]="{'selected': isSelected(type)}"
         (click)="toggleSelection(type)">{{type}}</button>
 </div>
-<div class="beat-list-wrapper" @listAnimation>
+<div class="beat-list-wrapper">
     <app-beat-listitem *ngFor="let beat of beatList" [beat]="beat" (click)="select(beat.name)"></app-beat-listitem>
     <app-beat-listitem *ngFor="let beat of beatListUnwanted" [beat]="beat" (click)="select(beat.name)" class="unwanted">
     </app-beat-listitem>
