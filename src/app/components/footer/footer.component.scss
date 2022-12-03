@@ -1,0 +1,11 @@
+@import '../../../styles.scss';
+
+:host {
+    opacity: .6;
+    padding-top: 16px;
+}
+
+a {
+    color: $color-semi-light;
+    text-decoration: none;
+}

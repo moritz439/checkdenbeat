@@ -12,7 +12,7 @@ import { Beat } from 'src/models';
     trigger('listAnimation', [
       transition('* <=> *', [
         query(':enter',
-          [style({ opacity: 0, transform: 'scale(.9)' }), stagger('20ms', animate('600ms ease-out', style({ opacity: 1, transform: 'scale(1)' })))],
+          [style({ opacity: 0 }), stagger('90ms', animate('600ms ease-out', style({ opacity: 1, transform: 'scale(1)' })))],
         )
       ])
     ])

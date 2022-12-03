@@ -1,4 +1,4 @@
-<div class="type-selector" #typeSelector>
+<div class="type-selector" #typeSelector @listAnimation>
     <button *ngFor="let type of types" [ngClass]="{'selected': isSelected(type)}"
         (click)="toggleSelection(type)">{{type}}</button>
 </div>

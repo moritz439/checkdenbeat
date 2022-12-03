@@ -1,16 +1,17 @@
 :host {
     display: flex;
-    gap: 16px;
     flex-direction: column;
     align-items: center;
+    
 }
 
-::ng-deep app-header {
-    width: 100%;
-    min-height: 66vh;
-}
-
-app-body {
-    width: 100%;
-    max-width: 800px;
+::ng-deep {
+    app-header {
+        width: 100%;
+        min-height: 66vh;
+    }
+    app-beatselector {
+        width: 100%;
+        max-width: 800px;
+    }
 }

@@ -9,6 +9,10 @@ import { BeatListitemComponent } from './components/beat-listitem/beat-listitem.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListPipe } from './pipes/list.pipe';
 import { QrCodeModule } from 'ng-qrcode';
+import { FooterComponent } from './components/footer/footer.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { BeatselectorComponent } from './components/beatselector/beatselector.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { QrCodeModule } from 'ng-qrcode';
     HeaderComponent,
     BodyComponent,
     BeatListitemComponent,
-    ListPipe
+    ListPipe,
+    FooterComponent,
+    ImprintComponent,
+    PrivacyComponent,
+    BeatselectorComponent
   ],
   imports: [
     BrowserModule,
