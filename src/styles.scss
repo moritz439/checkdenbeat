@@ -1,12 +1,11 @@
-
 @font-face {
-    font-family: SourceCode Regular;
-    src: url('./assets/SourceCodePro-Regular.ttf');
+  font-family: SourceCode Regular;
+  src: url('./assets/SourceCodePro-Regular.ttf');
 }
 
 @font-face {
-    font-family: SourceCode SemiBold;
-    src: url('./assets/SourceCodePro-SemiBold.ttf');
+  font-family: SourceCode SemiBold;
+  src: url('./assets/SourceCodePro-SemiBold.ttf');
 }
 
 $color-dark: #100F0F;
@@ -15,13 +14,20 @@ $color-light: #F1F1F1;
 $color-semi-light: #E2DCC8;
 
 @mixin devices ($breakpoint) {
-  
-    @if $breakpoint == tablet {    
-    @media only screen and (min-width: 550px) {
+
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 700px) {
       @content;
     }
   }
- 
+
+
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 700px) and (min-width: 550px) {
+      @content;
+    }
+  }
+
   @if $breakpoint == mobile {
     @media only screen and (max-width: 550px) {
       @content;
@@ -30,24 +36,23 @@ $color-semi-light: #E2DCC8;
 }
 
 body {
-    margin: 16px;
-    font-family: 'SourceCode Regular';
-    background-color: $color-dark;
-    color: $color-light;
+  margin: 16px;
+  font-family: 'SourceCode Regular';
+  background-color: $color-dark;
+  color: $color-light;
 }
 
 button {
-    border: none;
-    background-color: #0000;
-    margin: 0;
-    padding: 0;
-    font-size: medium;
-    font-family: 'SourceCode Regular';
-    color: #{$color-light + 'aa'};
+  border: none;
+  background-color: #0000;
+  margin: 0;
+  padding: 0;
+  font-size: medium;
+  font-family: 'SourceCode Regular';
+  color: #{$color-light + 'aa'};
 
 }
 
 h1 {
-    font-family: 'SourceCode SemiBold';
+  font-family: 'SourceCode SemiBold';
 }
-
