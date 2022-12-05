@@ -5,6 +5,9 @@
 }
 
 main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     max-width: 800px;
 }
 

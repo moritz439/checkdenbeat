@@ -13,9 +13,12 @@
 
 
 .type-selector {
+    padding-top: 16px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    width: 100%;
+    justify-content: flex-start;
 
     button {
         border: 1px solid #{$color-light + '11'};
@@ -29,6 +32,10 @@
             border-color: $color-semi-light;
             color: $color-dark;
         }
+    }
+
+    @include devices(desktop) {
+        justify-content: center;
     }
 }
 
