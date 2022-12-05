@@ -3,14 +3,8 @@
 :host {
     display: flex;
     gap: 16px;
-    box-sizing: border-box;
     flex-direction: column;
-
-    @include devices(tablet) {
-        align-items: center;
-    }
 }
-
 
 .type-selector {
     padding-top: 16px;
