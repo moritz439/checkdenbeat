@@ -8,18 +8,17 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 const routes: Routes = [
 
   {
-    path: 'imprint',
+    path: 'info/imprint',
     component: ImprintComponent
   },
   {
-    path: 'privacy',
+    path: 'info/privacy',
     component: PrivacyComponent
   },
   {
-    path: 'about',
+    path: 'info/about',
     component: AboutComponent
   },
-
   {
     path: ':beat',
     component: BeatselectorComponent
