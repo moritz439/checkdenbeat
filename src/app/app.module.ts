@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { BeatselectorComponent } from './components/beatselector/beatselector.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BeatselectorComponent } from './components/beatselector/beatselector.co
     FooterComponent,
     ImprintComponent,
     PrivacyComponent,
-    BeatselectorComponent
+    BeatselectorComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
