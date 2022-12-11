@@ -14,6 +14,7 @@ import { ImprintComponent } from './components/imprint/imprint.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { BeatselectorComponent } from './components/beatselector/beatselector.component';
 import { AboutComponent } from './components/about/about.component';
+import { InfoPageComponent } from './components/info-page/info-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AboutComponent } from './components/about/about.component';
     ImprintComponent,
     PrivacyComponent,
     BeatselectorComponent,
-    AboutComponent
+    AboutComponent,
+    InfoPageComponent
   ],
   imports: [
     BrowserModule,
