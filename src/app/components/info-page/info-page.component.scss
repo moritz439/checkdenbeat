@@ -1,8 +1,8 @@
 @import '../../../styles.scss';
 
 .link-back {
-    text-decoration: none;
-    color: $color-light;
+    cursor: pointer;
     position: absolute;
     right: 0;
+
 }
