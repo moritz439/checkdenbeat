@@ -1,5 +1,9 @@
 @import '../../../styles.scss';
 
+:host {
+    width: 100%;
+}
+
 .link-back {
     cursor: pointer;
     position: absolute;
