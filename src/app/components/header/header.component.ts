@@ -60,7 +60,7 @@ export class HeaderComponent {
   }
 
   play(name: string) {
-    this.beatCore.playPause(name);
+    this.beatCore.playPause();
   }
 
   copyURL() {
