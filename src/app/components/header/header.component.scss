@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: column;
     box-sizing: border-box;
+    position: relative;
 }
 
 h1 {
@@ -109,6 +110,14 @@ a {
         position: absolute;
         bottom: -32px;
     }
+}
+
+img {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    opacity: .4;
+    height: 100%;
 }
 
 
