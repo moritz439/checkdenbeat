@@ -1,20 +1,12 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-info-page',
   templateUrl: './info-page.component.html',
   styleUrls: ['./info-page.component.scss']
 })
-export class InfoPageComponent implements OnInit {
+export class InfoPageComponent {
 
-  constructor(private _location: Location ) { }
-
-  ngOnInit(): void {
-  }
-
-  navigateBack() {
-    this._location.back();
-  }
-
+  constructor() { }
 }
