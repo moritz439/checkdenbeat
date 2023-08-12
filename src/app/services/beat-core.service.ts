@@ -22,6 +22,14 @@ export class BeatCoreService {
   audioIsPlaying$: Observable<boolean>;
   private _audioIsPlaying: boolean = false;
 
+  // analyzer stuff
+  audioSource = null;
+  analyser: AnalyserNode = null;
+  audioCtx: AudioContext;
+  dataArray: Uint8Array;
+
+
+
 
   constructor() {
     this.beatList = [...beats].sort(this.sortByDate)
@@ -30,12 +38,54 @@ export class BeatCoreService {
     this.audioIsPlaying$ = this._audioIsPlayingSubject$.asObservable();
 
     this.selectedBeat$ = this._selectedBeatSubject.asObservable();
+    this.audioCtx = new (window.AudioContext)();
   }
+
+  private connectAudioAnalyzerToAudio(): void {
+    // https://blog.logrocket.com/audio-visualizer-from-scratch-javascript/#web-audio-api-overview
+
+    // remap on every beat selection necessary?
+    this.audioSource = this.audioCtx.createMediaElementSource(this._audio);
+    this.analyser = this.audioCtx.createAnalyser();
+    this.audioSource.connect(this.analyser);
+    this.analyser.connect(this.audioCtx.destination);
+
+    //debugger
+    //setup options
+
+    this.analyser.fftSize = 2048 * 2 * 2;
+    this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+  
+  }
+
+  getBassAmp() {
+    if (this.analyser) {
+      this.analyser.getByteFrequencyData(this.dataArray);
+      return this.getCumulativeAmpOfFrequencies(this.dataArray.slice(0,2));
+    } else {
+      return 0;
+    }
+  }
+
+  private getCumulativeAmpOfFrequencies(arr: Uint8Array): string {
+    const elementsCount = arr.length;
+    const sumOfElements = arr.reduce((a, b) => a + b);
+    const loudnessPercent = (sumOfElements / (255 * elementsCount)) * 100;
+    
+    // gate s lowest x percent
+    const gateThresholdPercent = 20;
+    const loudnessAfterFilter = loudnessPercent - gateThresholdPercent;
+    const loudnessFinal = loudnessAfterFilter < 0 ? 0 : loudnessAfterFilter * (100 / (100 - gateThresholdPercent));
+
+    return loudnessFinal.toFixed();
+  }
+
 
   selectBeat(name: string) {
     this.pause()
     this._selectedBeatSubject.next(this.getBeatByName(name));
     this._audio = new Audio(this.getBeatByName(name).filePath);
+    this.connectAudioAnalyzerToAudio();
   }
 
 

@@ -30,6 +30,8 @@ export class HeaderComponent {
   url: string;
   copyLinkButtonText = 'copy link';
 
+  ampBass;
+
   constructor(private beatCore: BeatCoreService, private router: Router, private route: ActivatedRoute) {
     const beatParamIsSet = !!this.route.snapshot.paramMap.get('beat');
     if (!beatParamIsSet) {
@@ -51,7 +53,14 @@ export class HeaderComponent {
 
     this.audioIsPlaying$ = this.beatCore.audioIsPlaying$;
 
-    this.selectedBeat$.subscribe(() => this.shareOpen = false)
+    this.selectedBeat$.subscribe(() => this.shareOpen = false);
+
+
+    setInterval(() => {
+
+      this.ampBass = this.beatCore.getBassAmp() + '%';
+
+    }, 1)
   }
 
   share() {
