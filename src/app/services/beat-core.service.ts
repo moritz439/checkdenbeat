@@ -53,7 +53,7 @@ export class BeatCoreService {
     //debugger
     //setup options
 
-    this.analyser.fftSize = 2048 * 2 * 2;
+    this.analyser.fftSize = 2048 * 2 * 2 * 2;
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
   
   }
@@ -61,7 +61,7 @@ export class BeatCoreService {
   getBassAmp() {
     if (this.analyser) {
       this.analyser.getByteFrequencyData(this.dataArray);
-      return this.getCumulativeAmpOfFrequencies(this.dataArray.slice(0,2));
+      return this.getCumulativeAmpOfFrequencies(this.dataArray.slice(0, 200));
     } else {
       return 0;
     }
@@ -73,7 +73,7 @@ export class BeatCoreService {
     const loudnessPercent = (sumOfElements / (255 * elementsCount)) * 100;
     
     // gate s lowest x percent
-    const gateThresholdPercent = 20;
+    const gateThresholdPercent = 50;
     const loudnessAfterFilter = loudnessPercent - gateThresholdPercent;
     const loudnessFinal = loudnessAfterFilter < 0 ? 0 : loudnessAfterFilter * (100 / (100 - gateThresholdPercent));
 

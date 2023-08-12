@@ -33,33 +33,14 @@ export class HeaderComponent {
   ampBass;
 
   constructor(private beatCore: BeatCoreService, private router: Router, private route: ActivatedRoute) {
-    const beatParamIsSet = !!this.route.snapshot.paramMap.get('beat');
-    if (!beatParamIsSet) {
-      this.router.navigate([this.beatCore.getRandomBeatName()]);
-    }
-
     this.route.paramMap.pipe(map(params => params.get('beat')))
       .subscribe(v => this.beatCore.selectBeat(v));
-
     this.selectedBeat$ = this.beatCore.selectedBeat$;
-    this.selectedBeatAdditionalInfos$ = this.selectedBeat$.pipe(map(beat => {
-      let additionalInfos = [];
-      beat.key && additionalInfos.push(beat.key);
-      beat.bpm && additionalInfos.push(`${beat.bpm} bpm`);
-      beat.date && additionalInfos.push(beat.date);
-
-      return additionalInfos
-    }));
-
     this.audioIsPlaying$ = this.beatCore.audioIsPlaying$;
-
     this.selectedBeat$.subscribe(() => this.shareOpen = false);
 
-
     setInterval(() => {
-
       this.ampBass = this.beatCore.getBassAmp() + '%';
-
     }, 1)
   }
 
