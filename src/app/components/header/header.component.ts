@@ -39,6 +39,8 @@ export class HeaderComponent {
     this.audioIsPlaying$ = this.beatCore.audioIsPlaying$;
     this.selectedBeat$.subscribe(() => this.shareOpen = false);
 
+
+    // TODO schöner lösen
     setInterval(() => {
       this.ampBass = this.beatCore.getBassAmp();
     }, 1)
