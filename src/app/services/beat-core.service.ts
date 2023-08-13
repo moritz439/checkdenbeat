@@ -49,7 +49,7 @@ export class BeatCoreService {
     this.analyser.connect(this.audioCtx.destination);
 
     
-    //setup options
+    // setup options
     // resolution of frequency bands needs to bee higher because analysers bands are probably not set up with logarithmic scale
     this.analyser.fftSize = 2048 * 2 * 2 * 2;
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
@@ -65,17 +65,18 @@ export class BeatCoreService {
     }
   }
 
-  private getCumulativeAmpOfFrequencies(arr: Uint8Array): number {
+  private getCumulativeAmpOfFrequencies(freqBandsArr: Uint8Array): number {
     // calculate medium loudness of given frequency bands
-    const elementsCount = arr.length;
-    const sumOfElements = arr.reduce((a, b) => a + b);
+    const elementsCount = freqBandsArr.length;
+    const sumOfElements = freqBandsArr.reduce((a, b) => a + b);
     const loudnessPercent = (sumOfElements / (255 * elementsCount)) * 100;
     
-    // gate lowest x percent
+    // gate lowest percent
     const gateThresholdPercent = 60;
     const loudnessAfterFilter = loudnessPercent - gateThresholdPercent;
     const loudnessFinal = loudnessAfterFilter < 0 ? 0 : loudnessAfterFilter * (100 / (100 - gateThresholdPercent));
 
+    // cut decimals
     return Math.round(loudnessFinal);
   }
 
