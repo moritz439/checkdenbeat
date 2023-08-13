@@ -19,16 +19,14 @@ export class BeatCoreService {
 
   private _audio: HTMLAudioElement;
   private _audioIsPlayingSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  audioIsPlaying$: Observable<boolean>;
   private _audioIsPlaying: boolean = false;
+  audioIsPlaying$: Observable<boolean>;
 
   // analyzer stuff
-  audioSource = null;
-  analyser: AnalyserNode = null;
-  audioCtx: AudioContext;
-  dataArray: Uint8Array;
-
-
+  private audioSource = null;
+  private analyser: AnalyserNode = null;
+  private audioCtx: AudioContext;
+  private dataArray: Uint8Array;
 
 
   constructor() {
@@ -50,9 +48,9 @@ export class BeatCoreService {
     this.audioSource.connect(this.analyser);
     this.analyser.connect(this.audioCtx.destination);
 
-    //debugger
+    
     //setup options
-
+    // resolution of frequency bands needs to bee higher because analysers bands are probably not set up with logarithmic scale
     this.analyser.fftSize = 2048 * 2 * 2 * 2;
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
   
@@ -61,23 +59,24 @@ export class BeatCoreService {
   getBassAmp() {
     if (this.analyser) {
       this.analyser.getByteFrequencyData(this.dataArray);
-      return this.getCumulativeAmpOfFrequencies(this.dataArray.slice(0, 200));
+      return this.getCumulativeAmpOfFrequencies(this.dataArray.slice(0, 100));
     } else {
       return 0;
     }
   }
 
-  private getCumulativeAmpOfFrequencies(arr: Uint8Array): string {
+  private getCumulativeAmpOfFrequencies(arr: Uint8Array): number {
+    // calculate medium loudness of given frequency bands
     const elementsCount = arr.length;
     const sumOfElements = arr.reduce((a, b) => a + b);
     const loudnessPercent = (sumOfElements / (255 * elementsCount)) * 100;
     
-    // gate s lowest x percent
-    const gateThresholdPercent = 50;
+    // gate lowest x percent
+    const gateThresholdPercent = 60;
     const loudnessAfterFilter = loudnessPercent - gateThresholdPercent;
     const loudnessFinal = loudnessAfterFilter < 0 ? 0 : loudnessAfterFilter * (100 / (100 - gateThresholdPercent));
 
-    return loudnessFinal.toFixed();
+    return Math.round(loudnessFinal);
   }
 
 
@@ -87,8 +86,6 @@ export class BeatCoreService {
     this._audio = new Audio(this.getBeatByName(name).filePath);
     this.connectAudioAnalyzerToAudio();
   }
-
-
 
   private play() {
     if (this._audio) {

@@ -11,8 +11,12 @@
 }
 
 h1 {
-    margin: 0;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-10deg) translateY(0px);
 }
 
 .interaction-wrapper {
@@ -28,7 +32,6 @@ h1 {
 
 .attributes-wrapper {
     font-size: larger;
-
 }
 
 qr-code {
@@ -120,8 +123,6 @@ img {
     opacity: .3;
     height: 100%;
 }
-
-
 
 @keyframes wiggle {
     0% {

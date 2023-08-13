@@ -40,7 +40,7 @@ export class HeaderComponent {
     this.selectedBeat$.subscribe(() => this.shareOpen = false);
 
     setInterval(() => {
-      this.ampBass = this.beatCore.getBassAmp() + '%';
+      this.ampBass = this.beatCore.getBassAmp();
     }, 1)
   }
 
