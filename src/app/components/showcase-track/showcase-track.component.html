@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="wrapper">
+    <ng-container *ngIf="selectedBeat$ | async as beat; else noBeatSelected">
+        <h1> {{ beat.name }} </h1>
+        <div class="attributes-wrapper">
+            {{beat.attributes | list }}
+        </div>
+        <qr-code @fade *ngIf="shareOpen" [value]="url" [darkColor]="'#E2DCC8'" [lightColor]="'#0000'" [margin]="0"
+            [size]="150">
+        </qr-code>
+        <div class="interaction-wrapper">
+            <div class="button-wrapper">
+                <button (click)="play(beat.name)" class="play-button">{{ (audioIsPlaying$ | async) ? 'pause' : 'play'
+                    }}</button>
+                <a [href]="beat.filePath" download>download</a>
+                <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
+                <button *ngIf="shareOpen" @fade (click)="copyURL()" class="link-button">{{ copyLinkButtonText }}</button>
+            </div>
+        </div>
+    </ng-container>
+    
+    <div class="flex">
+        <div class="test" [style.height]="ampBass + '%'" [style.width]="ampBass + '%'"></div>
+    </div>
+    
+    <ng-template #noBeatSelected>
+        <div class="placeholder">
+            <h2>
+                This beat is not available anymore.
+            </h2>
+            <h3>            
+                Check my other beats. 
+            </h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -4.5 24 24" width="24" fill="currentColor"><path d="M8 11.243l3.95-3.95a1 1 0 1 1 1.414 1.414l-5.657 5.657a.997.997 0 0 1-1.414 0L.636 8.707A1 1 0 1 1 2.05 7.293L6 11.243V1.657a1 1 0 1 1 2 0v9.586z"></path></svg>
+        </div>
+    </ng-template>
+    <img src="assets/img/profile2.svg">
+</div>

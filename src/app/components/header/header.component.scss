@@ -1,156 +1,36 @@
-@import './../../../styles.scss';
+@import '../../../styles.scss';
 
-:host {
+.wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-}
 
-.interaction-wrapper {
-    position: relative;
-    width: 250px;
-}
 
-.description-wrapper {
-    padding-top: 16px;
-    font-size: small;
-    color: #{$color-light + 'aa'};
-}
+    width: 100%;
 
-.attributes-wrapper {
-    font-size: larger;
-}
-
-qr-code {
-    overflow: hidden;
-    padding-top: 32px;
-}
-
-.button-wrapper {
-    padding-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1.4fr 1fr;
-    gap: 8px;
-    grid-template-areas:
-        "play-button play-button"
-        "share-button download-button"
-        "link-button link-button";
-
-    .play-button {
-        grid-area: play-button;
+    a {
+        display: block;
+        color: $color-light;
+        text-decoration: none;
     }
 
-    .download-button {
-        grid-area: download-button;
+    .title {
+        display: flex;
+        flex-direction: column;
+
+        h1,
+        h2 {
+            margin: 0;
+        }
     }
 
-    .share-button {
-        grid-area: share-button;
-    }
+    .links {
 
-    .link-button {
-        grid-area: link-button;
-    }
+        svg {
+            fill: white;
+            display: block;
+        }
 
-    overflow: hidden;
-}
-
-a {
-    color: #{$color-light + 'aa'};
-    text-decoration: none;
-    text-align: center;
-}
-
-button,
-a {
-    cursor: pointer;
-    font-size: large;
-    border: 1px solid #{$color-light + '11'};
-    border-radius: 4px;
-    padding: 4px 8px;
-    transition: color .2s, background-color .2s, border-color .2s;
-    overflow: hidden;
-
-    &:hover,
-    &.shareOpen {
-        background-color: $color-semi-light;
-        border-color: $color-semi-light;
-        color: $color-dark;
-    }
-}
-
-.placeholder {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-flow: column;
-    position: relative;
-
-    h2,
-    h3 {
-        margin-top: 0;
-    }
-
-    svg {
-        opacity: 0;
-        animation: wiggle 6s infinite;
-        width: 32px;
-        height: 32px;
-        position: absolute;
-        bottom: -32px;
-    }
-}
-
-img {
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
-    opacity: .3;
-    height: 100%;
-}
-
-@keyframes wiggle {
-    0% {
-        opacity: 0;
-        transform: translateY(0);
-    }
-
-    30% {
-        opacity: .3;
-        transform: translateY(10px);
-
-    }
-
-    60% {
-        transform: translateY(10px);
-
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 0;
-    }
-}
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    border: 1px solid gray;
-
-    .test {
-        border-radius: 100%;
-        width: 50px;
-        height: 50px;
-        background-color: white;
     }
 }

@@ -5,9 +5,9 @@ import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
 
 @Component({
-  selector: 'app-body',
-  templateUrl: './body.component.html',
-  styleUrls: ['./body.component.scss'],
+  selector: 'app-beat-selector',
+  templateUrl: './beat-selector.component.html',
+  styleUrls: ['./beat-selector.component.scss'],
   animations: [
     trigger('listAnimation', [
       transition('* <=> *', [
@@ -19,8 +19,7 @@ import { Beat } from 'src/models';
   ]
 
 })
-export class BodyComponent {
-
+export class BeatSelectorComponent {
   beatList: Beat[];
   beatListUnwanted: Beat[];
   types: string[];
@@ -36,7 +35,7 @@ export class BodyComponent {
   }
 
   select(name: string) {
-    this.router.navigate([name]);
+    this.router.navigate(['music', name]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

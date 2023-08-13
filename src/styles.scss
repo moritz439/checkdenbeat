@@ -10,11 +10,13 @@
 
 $color-dark: #100F0F;
 $color-semi-dark: #0F3D3E;
+$color-medium: #7e7e7e;
 $color-light: #F1F1F1;
 $color-semi-light: #E2DCC8;
 
-@mixin devices ($breakpoint) {
+$max-width: 1200px;
 
+@mixin devices ($breakpoint) {
   @if $breakpoint == desktop {
     @media only screen and (min-width: 900px) {
       @content;
@@ -40,6 +42,11 @@ body {
   font-family: 'SourceCode Regular';
   background-color: $color-dark;
   color: $color-light;
+
+  p {
+    line-height: 1.5em;
+
+  }
 }
 
 button {

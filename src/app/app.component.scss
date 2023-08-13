@@ -1,24 +1,7 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 main {
     display: flex;
     flex-flow: column;
     align-items: center;
-    max-width: 1200px;
     width: 100%;
     position: relative;
-}
-
-::ng-deep {
-    app-header {
-        width: 100%;
-        min-height: 66vh;
-    }
-    app-beatselector {
-        width: 100%;
-    }
 }

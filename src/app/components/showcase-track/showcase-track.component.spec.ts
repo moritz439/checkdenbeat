@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BeatselectorComponent } from './beatselector.component';
+import { ShowcaseTrackComponent } from './showcase-track.component';
 
-describe('BeatselectorComponent', () => {
-  let component: BeatselectorComponent;
-  let fixture: ComponentFixture<BeatselectorComponent>;
+describe('ShowcaseTrackComponent', () => {
+  let component: ShowcaseTrackComponent;
+  let fixture: ComponentFixture<ShowcaseTrackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BeatselectorComponent ]
+      declarations: [ ShowcaseTrackComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BeatselectorComponent);
+    fixture = TestBed.createComponent(ShowcaseTrackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
