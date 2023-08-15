@@ -1,7 +1,7 @@
-import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { fade } from 'src/animations';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
 
@@ -9,17 +9,7 @@ import { Beat } from 'src/models';
   selector: 'app-showcase-track',
   templateUrl: './showcase-track.component.html',
   styleUrls: ['./showcase-track.component.scss'],
-  animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({ opacity: 0, height: 0, padding: 0 }),
-        animate("200ms ease-in-out", style({ opacity: 1, height: '*', padding: '*' })),
-      ]),
-      transition(':leave', [
-        animate('200ms ease-in-out', style({ opacity: 0, height: 0, padding: 0 })),
-      ])
-    ])
-  ]
+  animations: [fade]
 })
 export class ShowcaseTrackComponent {
 

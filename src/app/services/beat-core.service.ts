@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as dayjs from 'dayjs';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
-import { BehaviorSubject, Observable, Subject, switchMap, tap, withLatestFrom } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { beats } from 'src/assets/beats';
 import { Beat } from 'src/models';
 
@@ -48,12 +48,12 @@ export class BeatCoreService {
     this.audioSource.connect(this.analyser);
     this.analyser.connect(this.audioCtx.destination);
 
-    
+
     // setup options
     // resolution of frequency bands needs to bee higher because analysers bands are probably not set up with logarithmic scale
     this.analyser.fftSize = 2048 * 2 * 2 * 2;
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
-  
+
   }
 
   getBassAmp() {
@@ -70,7 +70,7 @@ export class BeatCoreService {
     const elementsCount = freqBandsArr.length;
     const sumOfElements = freqBandsArr.reduce((a, b) => a + b);
     const loudnessPercent = (sumOfElements / (255 * elementsCount)) * 100;
-    
+
     // gate lowest percent
     const gateThresholdPercent = 60;
     const loudnessAfterFilter = loudnessPercent - gateThresholdPercent;

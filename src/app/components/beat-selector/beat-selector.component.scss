@@ -31,9 +31,10 @@
     display: grid;
     width: 100%;
     gap: 16px;
-    
+
     @include devices(desktop) {
         grid-template-columns: repeat(5, 1fr);
+
         app-beat-listitem {
             aspect-ratio: 1;
         }
@@ -46,7 +47,7 @@
             aspect-ratio: 1;
         }
     }
-    
+
     @include devices(mobile) {
         grid-template-columns: 1fr;
     }
@@ -57,5 +58,3 @@
         }
     }
 }
-
-

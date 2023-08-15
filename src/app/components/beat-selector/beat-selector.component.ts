@@ -35,7 +35,7 @@ export class BeatSelectorComponent {
   }
 
   select(name: string) {
-    this.router.navigate([ name]);
+    this.router.navigate([name]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -49,7 +49,7 @@ export class BeatSelectorComponent {
     } else {
       this.selectedTypes = this.selectedTypes.filter(typeEl => type !== typeEl)
     }
-    
+
     if (this.selectedTypes.length === 0) {
       this.beatList = this.beatCore.beatList;
       this.beatListUnwanted = [];
@@ -57,9 +57,9 @@ export class BeatSelectorComponent {
       this.beatList = this.beatCore.beatList.filter(beat => this.descriptorsMatchAttributes(beat.attributes))
       this.beatListUnwanted = this.beatCore.beatList.filter(beat => !this.descriptorsMatchAttributes(beat.attributes))
     }
-    
+
     const offsetTop = window.pageYOffset + this.typeSelector.nativeElement.getBoundingClientRect().top;
-    window.scrollTo({top: offsetTop, behavior: 'smooth'})
+    window.scrollTo({ top: offsetTop, behavior: 'smooth' })
   }
 
   descriptorsMatchAttributes(descriptors: string[]): boolean {

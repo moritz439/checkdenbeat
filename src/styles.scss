@@ -14,6 +14,7 @@ $color-medium: #7e7e7e;
 $color-light: #F1F1F1;
 $color-semi-light: #E2DCC8;
 
+$max-width-header: 1920px;
 $max-width: 1200px;
 
 @mixin devices ($breakpoint) {

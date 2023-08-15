@@ -1,13 +1,27 @@
 @import '../../../styles.scss';
 
+:host {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-
-
     width: 100%;
+    max-width: $max-width-header;
+    overflow: hidden;
+    transition: opacity .2s;
+
 
     a {
         display: block;
@@ -33,4 +47,12 @@
         }
 
     }
+
+    &:not(.hidden),
+    &:hover,
+    &>a:focus {
+        opacity: 1;
+    }
+
+    opacity: 0;
 }
