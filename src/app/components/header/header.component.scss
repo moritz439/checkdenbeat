@@ -50,7 +50,7 @@
 
     &:not(.hidden),
     &:hover,
-    &>a:focus {
+    &:focus-within {
         opacity: 1;
     }
 

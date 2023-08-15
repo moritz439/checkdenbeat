@@ -8,15 +8,17 @@
     cursor: pointer;
     transition: transform .2s;
     position: relative;
-
     background: linear-gradient(175deg, $color-light 0%, $color-light 45%, $color-semi-light 100%);
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         transform: scale(1.03);
     }
 }
 
 .description-wrapper {
     color: $color-dark;
+
     .name {
         font-family: 'SourceCode SemiBold';
         font-size: larger;
