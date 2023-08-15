@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="wrapper">
     <ng-container *ngIf="selectedBeat$ | async as beat; else noBeatSelected">
         <h1> {{ beat.name }} </h1>

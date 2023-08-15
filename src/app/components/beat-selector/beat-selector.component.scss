@@ -1,10 +1,5 @@
 @import './../../../styles.scss';
 
-:host {
-    display: flex;
-    flex-direction: column;
-    max-width: $max-width;
-}
 
 .type-selector {
     padding: 16px 0;

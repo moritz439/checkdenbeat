@@ -35,7 +35,7 @@ export class BeatSelectorComponent {
   }
 
   select(name: string) {
-    this.router.navigate(['music', name]);
+    this.router.navigate([ name]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

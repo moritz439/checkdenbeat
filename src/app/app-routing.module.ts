@@ -19,7 +19,7 @@ const routes: Routes = [
         component: GreeterComponent
       },
       {
-        path: 'music/:beat',
+        path: ':beat',
         component: ShowcaseTrackComponent,
       }
     ]
@@ -42,6 +42,10 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: '**',
+    component: AboutComponent
+  }
 ];
 
 @NgModule({
