@@ -14,24 +14,28 @@ $color-medium: #7e7e7e;
 $color-light: #F1F1F1;
 $color-semi-light: #E2DCC8;
 
+
+
 $max-width-header: 1920px;
 $max-width: 1200px;
 
+
+
 @mixin devices ($breakpoint) {
-  @if $breakpoint == desktop {
+  @if $breakpoint ==desktop {
     @media only screen and (min-width: 900px) {
       @content;
     }
   }
 
 
-  @if $breakpoint == tablet {
+  @if $breakpoint ==tablet {
     @media only screen and (max-width: 900px) and (min-width: 550px) {
       @content;
     }
   }
 
-  @if $breakpoint == mobile {
+  @if $breakpoint ==mobile {
     @media only screen and (max-width: 550px) {
       @content;
     }
@@ -39,7 +43,7 @@ $max-width: 1200px;
 }
 
 body {
-  margin: 16px;
+  margin: 0;
   font-family: 'SourceCode Regular';
   background-color: $color-dark;
   color: $color-light;

@@ -6,7 +6,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 66vh;
-    
+    position: relative;
+
+
 }
 
 .greeting {
@@ -16,6 +18,7 @@
 
     h1 {
         font-size: 40px;
+
         .addendum {
             font-size: 24px;
             color: $color-medium;
@@ -27,6 +30,8 @@
         margin: 8px 0;
         color: $color-medium;
     }
+
+
 }
 
 .preview {
@@ -35,3 +40,10 @@
     align-items: center;
 }
 
+img {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    opacity: .3;
+    width: 100%;
+}

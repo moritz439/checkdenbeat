@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
+import { GreeterComponent } from './components/greeter/greeter.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
-import { InfoPageComponent } from './components/info-page/info-page.component';
+import { MainViewComponent } from './components/main-view/main-view.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ShowcaseTrackComponent } from './components/showcase-track/showcase-track.component';
-import { HomeComponent } from './components/home/home.component';
-import { MainViewComponent } from './components/main-view/main-view.component';
-import { GreeterComponent } from './components/greeter/greeter.component';
 
 const routes: Routes = [
   {
@@ -16,31 +14,25 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: GreeterComponent
+        component: GreeterComponent,
       },
       {
-        path: ':beat',
+        path: 'track/:beat',
         component: ShowcaseTrackComponent,
       }
     ]
   },
   {
-    path: 'info',
-    component: InfoPageComponent,
-    children: [
-      {
-        path: 'imprint',
-        component: ImprintComponent
-      },
-      {
-        path: 'privacy',
-        component: PrivacyComponent
-      },
-      {
-        path: 'about',
-        component: AboutComponent
-      },
-    ]
+    path: 'imprint',
+    component: ImprintComponent
+  },
+  {
+    path: 'privacy',
+    component: PrivacyComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '**',

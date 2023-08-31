@@ -1,14 +1,12 @@
 @import '../../../styles.scss';
 
-:host {
+.floaty-wrapper.floaty-active {
     display: flex;
     justify-content: center;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    padding: 16px;
-    box-sizing: border-box;
     z-index: 5;
 }
 
@@ -17,11 +15,11 @@
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    width: 100%;
     max-width: $max-width-header;
-    overflow: hidden;
-    transition: opacity .2s;
-
+    transition: opacity .2s, background-color .2s;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
 
     a {
         display: block;
@@ -55,4 +53,8 @@
     }
 
     opacity: 0;
+
+    &.user-scrolled {
+        background-color: #{$color-dark + 'ee'};
+    }
 }

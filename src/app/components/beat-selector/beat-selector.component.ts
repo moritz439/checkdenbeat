@@ -35,7 +35,7 @@ export class BeatSelectorComponent {
   }
 
   select(name: string) {
-    this.router.navigate([name]);
+    this.router.navigate(['track', name]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -58,7 +58,7 @@ export class BeatSelectorComponent {
       this.beatListUnwanted = this.beatCore.beatList.filter(beat => !this.descriptorsMatchAttributes(beat.attributes))
     }
 
-    const offsetTop = window.pageYOffset + this.typeSelector.nativeElement.getBoundingClientRect().top;
+    const offsetTop = window.scrollY + this.typeSelector.nativeElement.getBoundingClientRect().top;
     window.scrollTo({ top: offsetTop, behavior: 'smooth' })
   }
 
