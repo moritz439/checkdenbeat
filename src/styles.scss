@@ -54,6 +54,10 @@ body {
   }
 }
 
+svg {
+  display: block;
+}
+
 button {
   border: none;
   background-color: #0000;
@@ -62,6 +66,7 @@ button {
   font-size: medium;
   font-family: 'SourceCode Regular';
   color: #{$color-light + 'aa'};
+  cursor: pointer;
 
 }
 
