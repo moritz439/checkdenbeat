@@ -3,6 +3,10 @@
 :host {
     opacity: .6;
     padding-top: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
 
 a {

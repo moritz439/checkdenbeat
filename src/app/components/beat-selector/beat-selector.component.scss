@@ -1,5 +1,14 @@
 @import './../../../styles.scss';
 
+:host {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    max-width: $max-width;
+}
 
 .type-selector {
     padding: 16px 0;

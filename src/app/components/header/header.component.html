@@ -5,9 +5,9 @@
             <h1>zweipunktnull</h1>
         </a>
         <div class="media-buttons" *ngIf="(selectedBeat$ | async) as beatName">
-            <span>
+            <a [routerLink]="'/track/' + beatName ">
                 {{ beatName }}
-            </span>
+            </a>
             <button (click)="playPause()">
                 <svg *ngIf="!(audioIsPlaying$ | async)" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -3 24 24"
                     width="24" fill="currentColor">
