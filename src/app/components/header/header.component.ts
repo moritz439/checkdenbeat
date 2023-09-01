@@ -30,4 +30,9 @@ export class HeaderComponent {
     this.homeRouteActive = activeRoute$.pipe(map(route => route === '/'));
     this.nonFloatyRouteActive = activeRoute$.pipe(map(route => this.nonFloatyRoutes.includes(route)));
   }
+
+  scrollTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  }
 }

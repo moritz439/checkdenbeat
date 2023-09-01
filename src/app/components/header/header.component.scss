@@ -1,13 +1,19 @@
 @import '../../../styles.scss';
 
-.floaty-wrapper.floaty-active {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 5;
+.floaty-wrapper {
+    &.floaty-active {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 5;
+    }
+
+    &:not(.floaty-active) {
+        border-bottom: 1px solid #{$color-light + '33'};
+    }
 }
 
 .wrapper {
