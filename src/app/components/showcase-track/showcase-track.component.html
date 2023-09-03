@@ -9,12 +9,14 @@
         </qr-code>
         <div class="interaction-wrapper">
             <div class="button-wrapper">
-                <button (click)="play(beat.name)" class="play-button">{{ (audioIsPlaying$ | async) ? 'pause' : 'play'
-                    }}</button>
+                <button (click)="play(beat)" class="play-button">
+                    {{ (audioIsPlaying$ | async) && (selectedBeatIsPlayingBeat$ | async) ? 'pause' : 'play'}}
+                </button>
                 <a [href]="beat.filePath" download>download</a>
                 <button (click)="share()" [ngClass]="{'shareOpen': shareOpen}"> share </button>
-                <button *ngIf="shareOpen" @fade (click)="copyURL()" class="link-button">{{ copyLinkButtonText
-                    }}</button>
+                <button *ngIf="shareOpen" @fade (click)="copyURL()" class="link-button">
+                    {{ copyLinkButtonText }}
+                </button>
             </div>
         </div>
     </ng-container>
@@ -34,5 +36,5 @@
             </svg>
         </div>
     </ng-template>
-    <img src="assets/img/profile2.svg" [style.transform]="'scale(' + (1 - (ampBass * 0.002)) + ')'">
+    <img src="assets/img/pattern1.svg" [style.transform]="'scale(' + (1 - (ampBass * 0.002)) + ')'">
 </div>

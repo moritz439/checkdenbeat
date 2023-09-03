@@ -14,12 +14,14 @@ export class BeatCoreService {
 
   beatList: Beat[];
 
-  private _selectedBeatSubject: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
+  private _selectedBeatSubject$: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
   selectedBeat$: Observable<Beat>;
+
+  private _playingBeatSubject$: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
+  playingBeat$: Observable<Beat>;
 
   private _audio: HTMLAudioElement;
   private _audioIsPlayingSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  private _audioIsPlaying: boolean = false;
   audioIsPlaying$: Observable<boolean>;
 
   // analyzer stuff
@@ -30,24 +32,25 @@ export class BeatCoreService {
 
 
   constructor() {
-    this.beatList = [...beats].sort(this.sortByDate)
+    this._audio = new Audio();
+    this.connectAudioAnalyzerToAudio();
 
-    this._audioIsPlayingSubject$.subscribe(isPlaying => this._audioIsPlaying = isPlaying);
+    this.beatList = [...beats].sort(this.sortByDate)
     this.audioIsPlaying$ = this._audioIsPlayingSubject$.asObservable();
 
-    this.selectedBeat$ = this._selectedBeatSubject.asObservable();
-    this.audioCtx = new (window.AudioContext)();
+    this.selectedBeat$ = this._selectedBeatSubject$.asObservable();
+    this.playingBeat$ = this._playingBeatSubject$.asObservable();
   }
 
   private connectAudioAnalyzerToAudio(): void {
     // https://blog.logrocket.com/audio-visualizer-from-scratch-javascript/#web-audio-api-overview
 
     // remap on every beat selection necessary?
+    this.audioCtx = new (window.AudioContext)();
     this.audioSource = this.audioCtx.createMediaElementSource(this._audio);
     this.analyser = this.audioCtx.createAnalyser();
     this.audioSource.connect(this.analyser);
     this.analyser.connect(this.audioCtx.destination);
-
 
     // setup options
     // resolution of frequency bands needs to bee higher because analysers bands are probably not set up with logarithmic scale
@@ -82,10 +85,7 @@ export class BeatCoreService {
 
 
   selectBeat(name: string) {
-    this.pause()
-    this._selectedBeatSubject.next(this.getBeatByName(name));
-    this._audio = new Audio(this.getBeatByName(name).filePath);
-    this.connectAudioAnalyzerToAudio();
+    this._selectedBeatSubject$.next(this.getBeatByName(name));
   }
 
   private play() {
@@ -102,22 +102,27 @@ export class BeatCoreService {
     }
   }
 
-  playPause() {
+  private _loadBeat(beat: Beat): void {
+    this._playingBeatSubject$.next(beat);
+    this._audioIsPlayingSubject$.next(false);
+    this._audio.src = beat.filePath;
+    this._audio.load();
+  }
+
+  playPause(beat?: Beat) {
+    if (beat && beat.name !== this._playingBeatSubject$?.getValue()?.name) {
+      this._loadBeat(beat);
+      console.log('loaded new beat');
+    }
     // canPlayTHrough implementieren: https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio
-    if (this._audioIsPlaying) {
+    if (this._audioIsPlayingSubject$.getValue()) {
       this.pause();
     } else {
       this.play();
     }
   }
 
-  getRandomBeatName(): string {
-    const randomIndex =
-      Math.floor(Math.random() * this.beatList.length);
-    return this.beatList[randomIndex].name;
-  }
-
-  private getBeatByName(name: string): Beat {
+  getBeatByName(name: string): Beat {
     return this.beatList.find(beat => beat.name === name);
   }
 

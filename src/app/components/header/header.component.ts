@@ -13,7 +13,7 @@ export class HeaderComponent {
   userScrolled = false;
   homeRouteActive: Observable<boolean>;
   nonFloatyRouteActive: Observable<boolean>;
-  selectedBeat$: Observable<string>;
+  playingBeat$: Observable<string>;
   audioIsPlaying$: Observable<boolean>;
 
   private readonly nonFloatyRoutes = ['/privacy', '/imprint', '/about'];
@@ -33,7 +33,7 @@ export class HeaderComponent {
     this.homeRouteActive = activeRoute$.pipe(map(route => route === '/'));
     this.nonFloatyRouteActive = activeRoute$.pipe(map(route => this.nonFloatyRoutes.includes(route)));
 
-    this.selectedBeat$ = this.bcs.selectedBeat$.pipe(filter(beat => !!beat?.name), map(beat => beat.name));
+    this.playingBeat$ = this.bcs.playingBeat$.pipe(filter(beat => !!beat?.name), map(beat => beat.name));
     this.audioIsPlaying$ = this.bcs.audioIsPlaying$;
   }
 

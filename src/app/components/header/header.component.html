@@ -1,10 +1,10 @@
 <header class="floaty-wrapper" [class.floaty-active]="!(nonFloatyRouteActive | async)"
-    [class.user-scrolled]="userScrolled">
+    [class.user-scrolled]="userScrolled" (click)="scrollTop()">
     <div class="wrapper" [class.hidden]="(homeRouteActive | async) && !userScrolled">
-        <a class="title" routerLink="/" (click)="scrollTop()">
+        <a class="title" routerLink="/">
             <h1>zweipunktnull</h1>
         </a>
-        <div class="media-buttons" *ngIf="(selectedBeat$ | async) as beatName">
+        <div class="media-buttons" *ngIf="(playingBeat$ | async) as beatName">
             <a [routerLink]="'/track/' + beatName ">
                 {{ beatName }}
             </a>

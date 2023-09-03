@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 import { fade } from 'src/animations';
 import { BeatCoreService } from 'src/app/services/beat-core.service';
 import { Beat } from 'src/models';
@@ -12,11 +12,10 @@ import { Beat } from 'src/models';
   animations: [fade]
 })
 export class ShowcaseTrackComponent {
-
-
   selectedBeat$: Observable<Beat>;
-  selectedBeatAdditionalInfos$: Observable<string[]>;
   audioIsPlaying$: Observable<boolean>;
+
+  selectedBeatIsPlayingBeat$: Observable<boolean>;
   shareOpen = false;
   url: string;
   copyLinkButtonText = 'copy link';
@@ -28,9 +27,10 @@ export class ShowcaseTrackComponent {
       .subscribe(v => this.beatCore.selectBeat(v));
     this.selectedBeat$ = this.beatCore.selectedBeat$;
     this.audioIsPlaying$ = this.beatCore.audioIsPlaying$;
+    this.selectedBeatIsPlayingBeat$ = combineLatest([this.selectedBeat$, this.beatCore.playingBeat$]).pipe(map(([a, b]) => a?.name === b?.name));
+
+
     this.selectedBeat$.subscribe(() => this.shareOpen = false);
-
-
     // TODO schöner lösen
     setInterval(() => {
       this.ampBass = this.beatCore.getBassAmp();
@@ -42,8 +42,8 @@ export class ShowcaseTrackComponent {
     this.shareOpen = !this.shareOpen;
   }
 
-  play(name: string) {
-    this.beatCore.playPause();
+  play(beat: Beat) {
+    this.beatCore.playPause(beat);
   }
 
   copyURL() {
