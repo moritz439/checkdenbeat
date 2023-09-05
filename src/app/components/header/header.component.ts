@@ -16,7 +16,7 @@ export class HeaderComponent {
   playingBeat$: Observable<string>;
   audioIsPlaying$: Observable<boolean>;
 
-  repeatIsOff = false;
+  audioIsLooped$: Observable<boolean>;
 
   private readonly nonFloatyRoutes = ['/privacy', '/imprint', '/about'];
 
@@ -37,6 +37,7 @@ export class HeaderComponent {
 
     this.playingBeat$ = this.bcs.playingBeat$.pipe(filter(beat => !!beat?.name), map(beat => beat.name));
     this.audioIsPlaying$ = this.bcs.audioIsPlaying$;
+    this.audioIsLooped$ = this.bcs.audioIsLooped$;
   }
 
   scrollTop() {
@@ -48,6 +49,6 @@ export class HeaderComponent {
   }
 
   toggleRepeat() {
-    this.repeatIsOff = !this.repeatIsOff;
+    this.bcs.toggleLoop();
   }
 }

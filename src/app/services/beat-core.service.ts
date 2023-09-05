@@ -13,6 +13,7 @@ dayjs.extend(customParseFormat);
 export class BeatCoreService {
 
   readonly beatList: Beat[];
+  private _audio: HTMLAudioElement;
 
   private _selectedBeatSubject$: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
   selectedBeat$: Observable<Beat>;
@@ -20,11 +21,11 @@ export class BeatCoreService {
   private _playingBeatSubject$: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
   playingBeat$: Observable<Beat>;
 
-  private _audio: HTMLAudioElement;
   private _audioIsPlayingSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   audioIsPlaying$: Observable<boolean>;
 
-
+  private _audioIsLoopedSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  audioIsLooped$: Observable<boolean>;
 
   // analyzer stuff
   private audioSource = null;
@@ -43,6 +44,7 @@ export class BeatCoreService {
 
     this.beatList = [...beats].sort(this.dateComparator)
     this.audioIsPlaying$ = this._audioIsPlayingSubject$.asObservable();
+    this.audioIsLooped$ = this._audioIsLoopedSubject$.asObservable();
 
     this.selectedBeat$ = this._selectedBeatSubject$.asObservable();
     this.playingBeat$ = this._playingBeatSubject$.asObservable();
@@ -130,6 +132,11 @@ export class BeatCoreService {
     } else {
       this.play();
     }
+  }
+
+  toggleLoop(): void {
+    this._audioIsLoopedSubject$.next(!this._audioIsLoopedSubject$.getValue());
+    this._audio.loop = this._audioIsLoopedSubject$.getValue();
   }
 
   getBeatByName(name: string): Beat {

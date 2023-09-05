@@ -1,4 +1,5 @@
 ### Nahe Zukunft 
+ - repeat button implementieren
  - play pause im trackpreview korrekt anzeigen
  - anderen beat auswählen loslösen von now playing
  - unendliches bassamp callback endlich machen
