@@ -12,7 +12,7 @@ dayjs.extend(customParseFormat);
 })
 export class BeatCoreService {
 
-  beatList: Beat[];
+  readonly beatList: Beat[];
 
   private _selectedBeatSubject$: BehaviorSubject<Beat> = new BehaviorSubject(undefined);
   selectedBeat$: Observable<Beat>;
@@ -33,9 +33,10 @@ export class BeatCoreService {
 
   constructor() {
     this._audio = new Audio();
+    this._audio.preload = 'none';
     this.connectAudioAnalyzerToAudio();
 
-    this.beatList = [...beats].sort(this.sortByDate)
+    this.beatList = [...beats].sort(this.dateComparator)
     this.audioIsPlaying$ = this._audioIsPlayingSubject$.asObservable();
 
     this.selectedBeat$ = this._selectedBeatSubject$.asObservable();
@@ -43,7 +44,7 @@ export class BeatCoreService {
   }
 
   private connectAudioAnalyzerToAudio(): void {
-    // https://blog.logrocket.com/audio-visualizer-from-scratch-javascript/#web-audio-api-overview
+    // https://blog.logrocket.com/audio-visuali2zer-from-scratch-javascript/#web-audio-api-overview
 
     // remap on every beat selection necessary?
     this.audioCtx = new (window.AudioContext)();
@@ -56,7 +57,6 @@ export class BeatCoreService {
     // resolution of frequency bands needs to bee higher because analysers bands are probably not set up with logarithmic scale
     this.analyser.fftSize = 2048 * 2 * 2 * 2;
     this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
-
   }
 
   getBassAmp() {
@@ -126,7 +126,7 @@ export class BeatCoreService {
     return this.beatList.find(beat => beat.name === name);
   }
 
-  private sortByDate(beatA: Beat, beatB: Beat): number {
+  private dateComparator(beatA: Beat, beatB: Beat): number {
     const dateFormat = 'DD.MM.YYYY';
     const dateA = dayjs(beatA.date, dateFormat);
     const dateB = dayjs(beatB.date, dateFormat);

@@ -21,6 +21,7 @@ export class ShowcaseTrackComponent {
   copyLinkButtonText = 'copy link';
 
   ampBass;
+  readBassAmpInterval: NodeJS.Timer;
 
   constructor(private beatCore: BeatCoreService, private router: Router, private route: ActivatedRoute) {
     this.route.paramMap.pipe(map(params => params.get('beat')))
@@ -29,15 +30,28 @@ export class ShowcaseTrackComponent {
     this.audioIsPlaying$ = this.beatCore.audioIsPlaying$;
     this.selectedBeatIsPlayingBeat$ = combineLatest([this.selectedBeat$, this.beatCore.playingBeat$]).pipe(map(([a, b]) => a?.name === b?.name));
 
-
     this.selectedBeat$.subscribe(() => this.shareOpen = false);
-    // TODO schöner lösen
-    setInterval(() => {
-      this.ampBass = this.beatCore.getBassAmp();
-    }, 1)
+
+    this.beatCore.audioIsPlaying$.subscribe(isPlaying => {
+      if (isPlaying) {
+        this.startBassAmpReadingInterval();
+      } else {
+        this.stopBassAmpReadingInterval();
+      }
+    })
   }
 
-  share() {
+  private startBassAmpReadingInterval(): void {
+    this.readBassAmpInterval = setInterval(() => {
+      this.ampBass = this.beatCore.getBassAmp();
+    }, 0);
+  }
+
+  private stopBassAmpReadingInterval(): void {
+    clearInterval(this.readBassAmpInterval);
+  }
+
+  share(): void {
     this.url = window.location.href;
     this.shareOpen = !this.shareOpen;
   }

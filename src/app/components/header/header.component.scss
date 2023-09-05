@@ -7,6 +7,7 @@
 
     &.user-scrolled {
         background-color: #{$color-dark + 'ee'};
+        backdrop-filter: blur(10px);
     }
 
     &.floaty-active {
