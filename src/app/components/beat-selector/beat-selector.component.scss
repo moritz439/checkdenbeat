@@ -20,7 +20,6 @@
     flex-wrap: wrap;
     gap: 8px;
     box-sizing: border-box;
-
     opacity: .6;
     transition: opacity .3s;
 
@@ -49,6 +48,14 @@
         border-radius: $radius-small;
         cursor: pointer;
         transition: color .2s, background-color .2s, border-color .2s;
+        display: inline-flex;
+
+        gap: 4px;
+
+        svg {
+            fill: $color-dark;
+
+        }
 
         &.selected {
             background-color: #{$color-light + 'ff'};
@@ -68,7 +75,7 @@
 
     @include devices(desktop) {
 
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
 
         app-beat-listitem {
             aspect-ratio: 1;
@@ -88,9 +95,7 @@
         grid-template-columns: 1fr;
     }
 
-    app-beat-listitem {
-        &.unwanted {
-            opacity: .6;
-        }
+    app-beat-listitem.unwanted {
+        opacity: .6;
     }
 }

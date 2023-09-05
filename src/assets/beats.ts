@@ -8,7 +8,8 @@ export const beats: Beat[] = [
         attributes: ['happy', 'chill'],
         filePath: 'assets/beats/bliss.mp3',
         date: '24.10.2022',
-        bpm: 999
+        bpm: 999,
+        key: 'c maj'
     },
     {
         name: 'calm down my friend',

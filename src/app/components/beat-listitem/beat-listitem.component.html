@@ -7,7 +7,10 @@
             {{ beat.attributes | list }}
         </span>
         <span *ngIf="beat.bpm">
-            {{ beat.bpm }}
+            {{ beat.bpm }} bpm
+        </span>
+        <span *ngIf="beat.key">
+            {{ beat.key }}
         </span>
     </div>
 </div>

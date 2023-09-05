@@ -22,11 +22,25 @@
     .name {
         font-family: 'SourceCode SemiBold';
         font-size: larger;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
     }
 
     .attributes {
         display: flex;
-        gap: 8px;
+        flex-direction: column;
+        flex-wrap: wrap;
+        border-top: 1px solid #{$color-dark + '22'};
+
+        span {
+            border-left: 1px solid #{$color-dark + '22'};
+            padding: 4px 8px;
+        }
+
+        @include devices(mobile) {
+            flex-direction: row;
+
+        }
+
+
     }
 }
