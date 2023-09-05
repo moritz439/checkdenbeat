@@ -16,6 +16,8 @@ export class HeaderComponent {
   playingBeat$: Observable<string>;
   audioIsPlaying$: Observable<boolean>;
 
+  repeatIsOff = false;
+
   private readonly nonFloatyRoutes = ['/privacy', '/imprint', '/about'];
 
   @HostListener('window:scroll', ['$event'])
@@ -43,5 +45,9 @@ export class HeaderComponent {
 
   playPause() {
     this.bcs.playPause();
+  }
+
+  toggleRepeat() {
+    this.repeatIsOff = !this.repeatIsOff;
   }
 }

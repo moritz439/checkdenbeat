@@ -63,6 +63,23 @@
 
         button {
             color: $color-light;
+
+            &.repeat {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+
+                .repeat-indicator {
+                    width: 4px;
+                    height: 4px;
+                    background-color: white;
+                    border-radius: 16px;
+                    position: absolute;
+                    bottom: -4px
+                }
+            }
         }
 
         &:hover {
