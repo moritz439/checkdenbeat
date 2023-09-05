@@ -24,17 +24,22 @@ export class BeatCoreService {
   private _audioIsPlayingSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   audioIsPlaying$: Observable<boolean>;
 
+
+
   // analyzer stuff
   private audioSource = null;
   private analyser: AnalyserNode = null;
   private audioCtx: AudioContext;
   private dataArray: Uint8Array;
 
+  // Chrome inhibits connecting AudioContext before actual userinteraction. this switch is used to only connect AC once after user definetly clicked something
+  // see https://developer.chrome.com/blog/autoplay/#web-audio
+  private audioAnalyzerIsConnected = false;
+
 
   constructor() {
     this._audio = new Audio();
     this._audio.preload = 'none';
-    this.connectAudioAnalyzerToAudio();
 
     this.beatList = [...beats].sort(this.dateComparator)
     this.audioIsPlaying$ = this._audioIsPlayingSubject$.asObservable();
@@ -107,12 +112,17 @@ export class BeatCoreService {
     this._audioIsPlayingSubject$.next(false);
     this._audio.src = beat.filePath;
     this._audio.load();
+
+    if (!this.audioAnalyzerIsConnected) {
+      this.connectAudioAnalyzerToAudio();
+      this.audioAnalyzerIsConnected = true;
+    }
   }
 
   playPause(beat?: Beat) {
     if (beat && beat.name !== this._playingBeatSubject$?.getValue()?.name) {
       this._loadBeat(beat);
-      console.log('loaded new beat');
+      console.log('loaded beat ' + beat.name);
     }
     // canPlayTHrough implementieren: https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio
     if (this._audioIsPlayingSubject$.getValue()) {
