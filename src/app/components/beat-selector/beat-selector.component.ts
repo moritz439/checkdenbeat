@@ -58,7 +58,7 @@ export class BeatSelectorComponent {
       this.beatListUnwanted = this.beatCore.beatList.filter(beat => !this.descriptorsMatchAttributes(beat.attributes))
     }
 
-    const guesstimationHeaderHeight = 64;
+    const guesstimationHeaderHeight = 80;
     const offsetTop = window.scrollY + this.typeSelector.nativeElement.getBoundingClientRect().top - guesstimationHeaderHeight;
     window.scrollTo({ top: offsetTop, behavior: 'smooth' })
   }

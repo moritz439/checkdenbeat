@@ -2,12 +2,13 @@ import { Beat } from "src/models";
 
 
 
-export const beats: Beat[] = [  
+export const beats: Beat[] = [
     {
         name: 'bliss',
         attributes: ['happy', 'chill'],
         filePath: 'assets/beats/bliss.mp3',
-        date: '24.10.2022'
+        date: '24.10.2022',
+        bpm: 999
     },
     {
         name: 'calm down my friend',

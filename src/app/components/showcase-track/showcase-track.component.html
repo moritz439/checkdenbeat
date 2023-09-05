@@ -1,5 +1,4 @@
 <div class="wrapper" [style.transform]="'scale(' + (1 + (ampBass * 0.001)) + ')'">
-    {{this.ampBass}}
     <ng-container *ngIf="selectedBeat$ | async as beat; else noBeatSelected">
         <h1> {{ beat.name }} </h1>
         <div class="attributes-wrapper">

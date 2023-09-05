@@ -3,6 +3,11 @@
         {{ beat.name }}
     </div>
     <div class="attributes">
-        {{ beat.attributes | list }}
+        <span *ngIf="beat.attributes">
+            {{ beat.attributes | list }}
+        </span>
+        <span *ngIf="beat.bpm">
+            {{ beat.bpm }}
+        </span>
     </div>
 </div>

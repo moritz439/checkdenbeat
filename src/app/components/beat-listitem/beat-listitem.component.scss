@@ -4,7 +4,7 @@
     padding: 16px 8px;
     box-sizing: border-box;
     background-color: $color-semi-light;
-    border-radius: 2px;
+    border-radius: $radius-small;
     cursor: pointer;
     transition: transform .2s;
     position: relative;
@@ -23,5 +23,10 @@
         font-family: 'SourceCode SemiBold';
         font-size: larger;
         margin-bottom: 4px;
+    }
+
+    .attributes {
+        display: flex;
+        gap: 8px;
     }
 }
