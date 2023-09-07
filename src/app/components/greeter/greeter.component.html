@@ -1,15 +1,23 @@
-<div class="greeting">
-    <h1>
-        <div class="addendum">willkommen bei</div>
-        zweipunktnull
-    </h1>
-    <p>
-        Alle Produktionen, Tracks und Beats auf dieser Seite stehen zur freien Verfügung.<br>
-        Kontaktiere mich über Instagram, wenn du fragen hast.
-    </p>
+<div class="wrapper">
+    <div class="greeting">
+        <h1>
+            <div class="addendum">willkommen bei</div>
+            zweipunktnull
+        </h1>
+        <p>
+            Alle Produktionen, Tracks und Beats auf dieser Seite stehen dir zur freien Verfügung.<br>
+            Kontaktiere mich über <a class="inline" href="https://instagram.com">Instagram</a>, wenn du Fragen hast oder
+            mit
+            mir arbeiten
+            möchtest.
+        </p>
 
+    </div>
+    <div class="preview">
+        <app-beat-listitem [beat]="beatList[0]"></app-beat-listitem>
+    </div>
 </div>
-<div class="preview">
-    hier bild oder paar tracks
+<div class="image-wrapper">
+
+    <img src="assets/img/pattern_analogue_simple.svg">
 </div>
-<img src="assets/img/pattern_analogue.svg">

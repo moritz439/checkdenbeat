@@ -2,11 +2,31 @@
 
 
 :host {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     height: 66vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid white;
+    box-sizing: border-box;
     position: relative;
 }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    max-width: $max-width-header;
+
+    @include devices(mobile) {
+        grid-template-columns: 1fr;
+
+        .preview {
+            display: none;
+        }
+    }
+}
+
+
 
 .greeting {
     display: flex;
@@ -15,6 +35,7 @@
 
     h1 {
         font-size: 40px;
+        margin-top: 0;
 
         .addendum {
             font-size: 24px;
@@ -35,13 +56,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    app-beat-listitem {
+        width: 230px;
+        height: 230px;
+
+        box-shadow: 0px 15px 40px -19px #{$color-semi-light + '44'};
+    }
 }
 
-img {
+.image-wrapper {
     position: absolute;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     z-index: -1;
-    opacity: .3;
-    min-width: 100%;
-    min-height: 100%;
+    user-select: none;
+
+    img {
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+        opacity: .3;
+        min-width: 100%;
+        min-height: 100%;
+    }
 }

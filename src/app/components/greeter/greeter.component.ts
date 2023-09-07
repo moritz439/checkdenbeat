@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { beats } from 'src/assets/beats';
 
 @Component({
   selector: 'app-greeter',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./greeter.component.scss']
 })
 export class GreeterComponent implements OnInit {
+
+  beatList = beats;
 
   constructor() { }
 

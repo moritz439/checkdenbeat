@@ -60,6 +60,25 @@ body {
   p {
     line-height: 1.5em;
 
+    &.indent {
+      padding-left: 16px;
+    }
+  }
+}
+
+a.inline {
+  text-decoration: none;
+  font-weight: bold;
+  color: $color-medium;
+
+  &::after {
+    content: ' ↗';
+
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 }
 

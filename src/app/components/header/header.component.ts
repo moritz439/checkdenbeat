@@ -13,7 +13,7 @@ export class HeaderComponent {
   userScrolled = false;
   homeRouteActive: Observable<boolean>;
   nonFloatyRouteActive: Observable<boolean>;
-  playingBeat$: Observable<string>;
+  playingBeatName$: Observable<string>;
   audioIsPlaying$: Observable<boolean>;
 
   audioIsLooped$: Observable<boolean>;
@@ -35,13 +35,9 @@ export class HeaderComponent {
     this.homeRouteActive = activeRoute$.pipe(map(route => route === '/'));
     this.nonFloatyRouteActive = activeRoute$.pipe(map(route => this.nonFloatyRoutes.includes(route)));
 
-    this.playingBeat$ = this.bcs.playingBeat$.pipe(filter(beat => !!beat?.name), map(beat => beat.name));
+    this.playingBeatName$ = this.bcs.playingBeat$.pipe(filter(beat => !!beat?.name), map(beat => beat.name));
     this.audioIsPlaying$ = this.bcs.audioIsPlaying$;
     this.audioIsLooped$ = this.bcs.audioIsLooped$;
-  }
-
-  scrollTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   playPause() {
