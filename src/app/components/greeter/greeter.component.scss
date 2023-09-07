@@ -2,13 +2,10 @@
 
 
 :host {
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 66vh;
     position: relative;
-
-
 }
 
 .greeting {
@@ -45,5 +42,6 @@ img {
     bottom: 0;
     z-index: -1;
     opacity: .3;
-    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
 }

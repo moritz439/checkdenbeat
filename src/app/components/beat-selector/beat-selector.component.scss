@@ -4,7 +4,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 8px;
 }
 
 .wrapper {
@@ -24,7 +24,7 @@
     transition: opacity .3s;
 
     svg {
-        fill: #{$color-semi-light + '88'};
+        fill: #{$color-semi-light + '66'};
     }
 
     &:hover,
