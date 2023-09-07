@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    gap: 16px;
+    gap: 8px;
 }
 
 .type-selector {
@@ -43,8 +43,8 @@
         padding: 4px 8px;
         height: 32px;
 
-        background-color: #{$color-semi-light + '88'};
-        color: $color-dark;
+        background-color: #{$color-semi-light + '11'};
+        color: $color-semi-light;
         border-radius: $radius-small;
         cursor: pointer;
         transition: color .2s, background-color .2s, border-color .2s;
@@ -58,10 +58,9 @@
         }
 
         &.selected {
-            background-color: #{$color-light + 'ff'};
+            background-color: $color-semi-light;
             border-color: $color-semi-light;
             color: $color-dark;
-            font-weight: bold;
         }
     }
 
