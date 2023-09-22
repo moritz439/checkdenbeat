@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-    border: 1px solid white;
     box-sizing: border-box;
     position: relative;
 }
@@ -14,14 +13,21 @@
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    position: relative;
     max-width: $max-width-header;
 
     @include devices(mobile) {
         grid-template-columns: 1fr;
 
+
         .preview {
             display: none;
+        }
+
+        .greeting {
+
+            p {
+                font-size: 20px;
+            }
         }
     }
 }
@@ -52,17 +58,59 @@
 
 }
 
-.preview {
+.preview-wrapper {
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
 
-    app-beat-listitem {
-        width: 230px;
-        height: 230px;
 
-        box-shadow: 0px 15px 40px -19px #{$color-semi-light + '44'};
+
+    .tracks-wrapper {
+        display: flex;
+        gap: 8px;
+
+
+        app-beat-listitem {
+            $dimension: 200px;
+            display: block;
+            width: $dimension;
+            height: $dimension;
+            box-shadow: 0px 5px 59px -13px #{$color-dark + '77'};
+
+            transition-property: width, height, transform;
+            transition-duration: .3s;
+
+            &:hover {
+                z-index: 10;
+                transform: scale(1.1);
+            }
+
+            &:nth-child(1) {
+                position: absolute;
+                transform: rotate(-10deg) translate(#{($dimension - 50px) * -1}, -10px);
+            }
+
+            &:nth-child(2) {
+                transform: translateY(-15px);
+            }
+
+            &:nth-child(3) {
+                position: absolute;
+                transform: rotate(10deg) translate(#{$dimension - 50px}, -10px);
+            }
+
+
+
+
+        }
+
+
     }
+
+
+
+
 }
 
 .image-wrapper {
