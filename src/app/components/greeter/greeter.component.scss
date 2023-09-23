@@ -11,6 +11,7 @@
 }
 
 .wrapper {
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: $max-width-header;
@@ -37,6 +38,7 @@
 
 
 .greeting {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,8 +67,10 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    animation: flyin 2s cubic-bezier(0.310, 1.060, 0.560, 0.985);
 
-    animation: flyin 1s;
+
+
 
     &:hover,
     &:focus-within {
@@ -102,7 +106,6 @@
         display: flex;
         transition: transform .3s, filter .3s;
         filter: blur(5px) brightness(.5);
-
 
         app-beat-listitem {
             $dimension: 200px;
@@ -145,6 +148,7 @@
     left: 0;
     z-index: -1;
     user-select: none;
+    animation: fadein 2s;
 
     img {
         position: absolute;
