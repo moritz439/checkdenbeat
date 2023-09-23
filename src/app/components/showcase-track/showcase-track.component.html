@@ -1,6 +1,5 @@
 <div class="wrapper">
     <ng-container *ngIf="selectedBeat$ | async as beat; else noBeatSelected">
-        {{ampBass}}
         <h1> {{ beat.name }} </h1>
         <div class="attributes-wrapper">
             {{beat.attributes | list }}
@@ -37,5 +36,7 @@
             </svg>
         </div>
     </ng-template>
+
     <img src="assets/img/pattern1.svg">
+    <img src="assets/img/pattern1.svg" [style.transform]="'scale(' + (100 / (100 - (ampBass / 5))) + ')'">
 </div>
