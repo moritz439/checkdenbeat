@@ -1,6 +1,11 @@
 @import '../../../styles.scss';
 
-:host {
+:host {}
+
+.description-wrapper {
+    color: $color-dark;
+    height: 100%;
+
     padding: 16px 8px;
     box-sizing: border-box;
     background-color: $color-semi-light;
@@ -14,10 +19,6 @@
     &:focus {
         transform: scale(1.03);
     }
-}
-
-.description-wrapper {
-    color: $color-dark;
 
     .name {
         font-family: 'SourceCode SemiBold';
