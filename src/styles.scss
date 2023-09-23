@@ -101,3 +101,15 @@ button {
 h1 {
   font-family: 'SourceCode SemiBold';
 }
+
+@keyframes flyin {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
